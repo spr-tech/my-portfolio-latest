@@ -80,8 +80,10 @@ src/
 │   ├── page.tsx                  # Projects tab
 │   ├── experience/page.tsx
 │   ├── about/page.tsx
-│   ├── opengraph-image.png       # 1200×630 link preview, picked up automatically
-│   └── not-found.tsx
+│   ├── icon.png                  # 512px "MJ" icon; apple-icon.png (180px) and favicon.ico too
+│   ├── sitemap.ts                # Built from the tab list
+│   ├── robots.ts
+│   └── not-found.tsx             # 404 inside the normal shell
 │
 ├── assets/
 │   └── images/
@@ -120,26 +122,30 @@ src/
 │       ├── experience/
 │       │   ├── experienceContent.tsx
 │       │   └── jobCard.tsx           # One role on the work timeline
-│       └── about/
-│           ├── aboutContent.tsx
-│           └── terminalCard.tsx      # Always-dark terminal window
+│       ├── about/
+│       │   ├── aboutContent.tsx
+│       │   └── terminalCard.tsx      # Always-dark terminal window
+│       └── notFound/notFoundContent.tsx
 │
 ├── data/                         # All site copy, typed
 │   ├── profile.ts                # Name, photo, tagline, email, contacts, CV
 │   ├── projects.ts               # Projects tab intro, featured and team projects
 │   ├── experience.ts             # Experience tab intro, jobs, education
 │   ├── skills.ts                 # Skill groups and the tools strip
-│   └── about.ts                  # About tab copy, terminal lines, principles
+│   ├── about.ts                  # About tab copy, terminal lines, principles
+│   └── notFound.ts               # 404 copy
 │
 ├── models/                       # Types for the data files
-│   ├── page.ts                   # PageIntro: title + intro shared by every tab
+│   ├── page.ts                   # PageIntro: title, intro, meta description for every page
 │   ├── profile.ts
 │   ├── project.ts
 │   ├── experience.ts             # Job, SkillGroup, Education
-│   └── about.ts
+│   ├── about.ts
+│   └── notFound.ts
 │
 └── utilities/
     ├── helpers/cn.ts
+    ├── helpers/pageMetadata.ts   # Full metadata set for a page (title, description, OG, X)
     ├── helpers/mailto.ts         # mailto: link with an encoded subject
     ├── helpers/riseDelay.ts      # Inline delays for the staggered entrance
     ├── constants/navigation.ts   # Tab list: label + href
@@ -150,6 +156,7 @@ Outside `src/`:
 
 ```
 public/files/muizz-jamiu-cv.pdf   # Download CV links here
+public/og-image.png               # 1200×630 link preview for every page
 docs/frontendStructureGuide.md
 docs/design/                      # Approved design files, reference only
 ```
@@ -374,13 +381,25 @@ These apply to every piece of copy in `src/data/`.
 
 ## Metadata and sharing
 
-The current site's link preview is blank. Fixing that is a priority.
+The old site's link preview was blank; this one has a designed preview image on every page.
 
-- Root `metadata` in `src/app/layout.tsx`: title template `%s · Muizz Jamiu`, default title,
-  description, `openGraph` and `twitter` with a 1200×630 preview image in `public/`, and `metadataBase`.
-- Each tab page exports its own `title` and `description`.
-- Add `src/app/sitemap.ts` and `src/app/robots.ts`.
-- Test the preview by pasting the link into WhatsApp and LinkedIn before calling it done.
+- Root `metadata` in `src/app/layout.tsx`: title template `%s · Muizz Jamiu`, default title
+  "Muizz Jamiu · Frontend Engineer", description, `openGraph`, `twitter` and `metadataBase` (from
+  `src/utilities/constants/site.ts`).
+- Every page builds its metadata with `pageMetadata()` from `src/utilities/helpers/pageMetadata.ts`.
+  Next merges page metadata shallowly, so a page's `openGraph` replaces the layout's whole object;
+  the helper always returns the full set (title, description, canonical, Open Graph, X card).
+- The home page sets no title, so it shows the full default title. Other tabs show "Experience ·
+  Muizz Jamiu". Meta descriptions live in each data file as `metaDescription`.
+- The preview image is `public/og-image.png`, 1200×630, described by `profile.previewImage` (path,
+  size, alt text) in `src/data/profile.ts`, and added to every page by `pageMetadata()`. Not the
+  `opengraph-image` file convention: that attaches the image to the root segment's `openGraph`,
+  which each page's own `openGraph` then replaces, so only the home page kept it. It was rendered
+  from HTML with the site's colours and Poppins; regenerate it if the name, role or tagline changes.
+- Icons: `src/app/icon.png`, `apple-icon.png` and `favicon.ico` (32 and 48px), all "MJ" on indigo.
+- `src/app/sitemap.ts` (built from the tab list) and `src/app/robots.ts`.
+- Test the preview by pasting the link into WhatsApp and LinkedIn before calling it done. This needs
+  the deployed site, since those apps can't reach localhost.
 
 ---
 

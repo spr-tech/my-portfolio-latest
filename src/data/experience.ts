@@ -3,6 +3,8 @@ import type { Education, ExperiencePage, Job } from "@/models/experience";
 export const experiencePage: ExperiencePage = {
   title: "Experience",
   intro: "Where I’ve worked, and what I built there.",
+  metaDescription:
+    "Muizz Jamiu’s experience: Software Engineering Fellow at TeSA Africa, frontend internships at RWA Inc and STX Technology, plus skills and education.",
   workTitle: "Work",
   skillsTitle: "Skills",
   educationTitle: "Education",

@@ -7,6 +7,8 @@ import type { FeaturedProject, ProjectsPage, TeamProject } from "@/models/projec
 export const projectsPage: ProjectsPage = {
   title: "Projects",
   intro: "Things I’ve built, and the decisions behind them.",
+  metaDescription:
+    "Projects by Muizz Jamiu, a frontend engineer in Lagos: Flowboard, Enter, FoodBridge and EkoWatch, each with the problem, what was built and one decision.",
   featuredTitle: "Featured",
   teamTitle: "Team projects",
   toolsLabel: "Tools I build with",

@@ -29,6 +29,13 @@ export type Profile = {
   photoAlt: string;
   /** Used as the site's meta description. */
   siteDescription: string;
+  /** The 1200×630 link preview shown by WhatsApp, LinkedIn, X and Slack. Lives in public/. */
+  previewImage: {
+    src: string;
+    width: number;
+    height: number;
+    alt: string;
+  };
   tagline: {
     /** "I build interfaces that are" */
     lead: string;
