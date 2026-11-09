@@ -115,7 +115,9 @@ src/
 │       │   ├── projectCard.tsx       # Featured card
 │       │   ├── teamProjectCard.tsx   # Smaller team card
 │       │   └── toolsStrip.tsx        # Marquee of tools
-│       ├── experience/experienceContent.tsx
+│       ├── experience/
+│       │   ├── experienceContent.tsx
+│       │   └── jobCard.tsx           # One role on the work timeline
 │       ├── about/aboutContent.tsx
 │       └── contact/contactContent.tsx
 │

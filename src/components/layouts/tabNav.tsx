@@ -10,7 +10,9 @@ export function TabNav() {
   const pathname = usePathname();
 
   return (
-    <nav aria-label="Sections" className="border-b border-border">
+    <nav
+      aria-label="Sections"
+className="sticky top-0 z-10 border-b border-border bg-bg/80 backdrop-blur-md lg:-mt-6 lg:pt-6"    >
       <ul className="-mb-px flex overflow-x-auto lg:gap-1">
         {navigationTabs.map((tab) => {
           const isActive = pathname === tab.href;
