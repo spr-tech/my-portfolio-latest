@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Portfolio experience, mobile, dark</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.rot{display:inline-block;height:1.6em;overflow:hidden;vertical-align:bottom}
+.rot>span{display:block;animation:rot 7.5s cubic-bezier(.7,0,.2,1) infinite}
+.rot>span>span{display:block;height:1.6em;line-height:1.6em;font-weight:500;color:#b3a8ff}
+@keyframes rot{0%,28%{transform:translateY(0)}33%,61%{transform:translateY(-1.6em)}66%,94%{transform:translateY(-3.2em)}100%{transform:translateY(-4.8em)}}
+.ping::after{content:"";position:absolute;inset:0;border-radius:50%;background:inherit;animation:ping 2s cubic-bezier(0,0,.2,1) infinite}
+@keyframes ping{75%,100%{transform:scale(2.6);opacity:0}}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;width:max-content;animation:marq 40s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(-50%)}}
+.type{white-space:pre-wrap;animation:type .8s steps(24) backwards}
+@keyframes type{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.cursor{display:inline-block;width:8px;height:15px;background:#b3a8ff;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion: reduce){.rot>span,.ping::after,.track,.type,.cursor{animation:none}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
+.rise{animation:rise .6s cubic-bezier(.2,.7,.2,1) backwards}
+.pop{animation:pop .6s cubic-bezier(.2,.7,.2,1) backwards}
+.card{transition:transform .25s ease-out,border-color .25s ease-out}
+.card:hover{transform:translateY(-4px);border-color:#7c6cff !important}
+.shot{transition:transform .6s ease-out}
+.card:hover .shot{transform:scale(1.04)}
+.nudge svg{transition:transform .2s ease-out}
+.nudge:hover svg{transform:translate(2px,-2px)}
+.dot{animation:pulse 1.8s ease-in-out infinite}
+.btn{transition:transform .15s ease-out,filter .15s ease-out}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.1)}
+.btn:active{transform:scale(.97)}
+@media (prefers-reduced-motion: reduce){.rise,.pop,.dot{animation:none}.card,.shot,.btn,.nudge svg{transition:none}.card:hover,.card:hover .shot,.btn:hover{transform:none}}
+
+a{color:#b3a8ff}a:hover{color:#d4ccff}
+</style>
+</helmet>
+<div style="width: 390px; height: 2960px; box-sizing: border-box; background: #121417; background-image: radial-gradient(ellipse 70% 45% at 65% -8%, rgba(124,108,255,0.22), transparent 70%), radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 100% 100%, 24px 24px; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #e7e9ec; padding: 16px; display: flex; flex-direction: column; gap: 24px; overflow: hidden">
+<section aria-label="Profile" class="rise" style="background: #1b1e23; border: 1px solid #2a2e35; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 12px">
+<div class="pop" style="width: 56px; height: 56px; flex: none; border-radius: 50%; background: #22262c; outline: 2px solid #7c6cff; outline-offset: 3px; border: 1px solid #2a2e35; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 500; color: #9aa0a8">MJ</div>
+<div style="flex: 1; min-width: 0">
+<p style="margin: 0; font-size: 18px; font-weight: 600">Muizz Jamiu</p>
+<span style="display: inline-block; margin-top: 4px; font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 6px; background: #2a2550; color: #b3a8ff">Frontend Engineer</span>
+</div>
+<button type="button" aria-label="Switch to light mode" style="width: 44px; height: 44px; flex: none; padding: 0; border-radius: 10px; border: 1px solid #2a2e35; background: #22262c; color: #e7e9ec; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></button>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 1.6; color: #9aa0a8">I build interfaces that are <span class="rot" aria-hidden="true"><span><span>fast</span><span>accessible</span><span>reliable</span><span>fast</span></span></span><span class="sr">fast, accessible and reliable</span>.</p>
+<span style="display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 999px; border: 1px solid #2a2e35; color: #9aa0a8"><span class="ping" aria-hidden="true" style="position: relative; width: 8px; height: 8px; border-radius: 50%; background: #4ade80"></span>Open to frontend roles</span>
+<div style="display: flex; gap: 8px">
+<button type="button" onClick="{{toggleContacts}}" aria-expanded="{{contactsExpanded}}" style="flex: 1; height: 44px; border-radius: 10px; border: 1px solid #2a2e35; background: #22262c; color: #e7e9ec; font-family: inherit; font-size: 14px; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer">{{contactsLabel}}<svg aria-hidden="true" style="transform: rotate({{chevTurn}}); transition: transform 0.3s ease-out" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></button>
+<a href="#" class="btn" style="flex: 1; height: 44px; border-radius: 10px; background: #7c6cff; color: #0e0b24; font-size: 14px; font-weight: 500; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>Download CV</a>
+</div>
+<div style="max-height: {{contactsMax}}; opacity: {{contactsOpacity}}; margin-top: {{contactsMargin}}; overflow: hidden; transition: max-height 0.35s ease-out, opacity 0.3s ease-out, margin-top 0.35s ease-out">
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px">
+<li style="display: flex; gap: 12px; align-items: center">
+<div style="width: 36px; height: 36px; flex: none; border-radius: 8px; background: #22262c; color: #b3a8ff; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></div>
+<div style="min-width: 0"><p style="margin: 0; font-size: 12px; color: #858b94">Email</p><a href="mailto:opeyemimuizz@gmail.com" style="font-size: 14px; color: #e7e9ec; text-decoration: none">opeyemimuizz@gmail.com</a></div>
+</li>
+<li style="display: flex; gap: 12px; align-items: center">
+<div style="width: 36px; height: 36px; flex: none; border-radius: 8px; background: #22262c; color: #b3a8ff; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></div>
+<div><p style="margin: 0; font-size: 12px; color: #858b94">Location</p><p style="margin: 0; font-size: 14px">Lagos, Nigeria</p></div>
+</li>
+<li style="display: flex; gap: 12px; align-items: center">
+<div style="width: 36px; height: 36px; flex: none; border-radius: 8px; background: #22262c; color: #b3a8ff; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.3-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg></div>
+<div><p style="margin: 0; font-size: 12px; color: #858b94">GitHub</p><a href="https://github.com/spr-tech" style="font-size: 14px; color: #e7e9ec; text-decoration: none">github.com/spr-tech</a></div>
+</li>
+<li style="display: flex; gap: 12px; align-items: center">
+<div style="width: 36px; height: 36px; flex: none; border-radius: 8px; background: #22262c; color: #b3a8ff; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"></path></svg></div>
+<div><p style="margin: 0; font-size: 12px; color: #858b94">LinkedIn</p><a href="https://linkedin.com/in/muizz-opeyemi" style="font-size: 14px; color: #e7e9ec; text-decoration: none">in/muizz-opeyemi</a></div>
+</li>
+</ul>
+</div>
+</section>
+<nav aria-label="Sections" class="rise" style="animation-delay: 80ms; display: flex; gap: 2px; border-bottom: 1px solid #2a2e35; margin-top: -8px">
+<sc-for list="{{tabs}}" as="tab" hint-placeholder-count="4"><a href="{{tab.href}}" onClick="{{tab.select}}" aria-current="{{tab.current}}" style="position: relative; display: inline-block; text-decoration: none; background: none; border: 0; cursor: pointer; font-family: inherit; padding: 12px 10px; font-size: 14px; font-weight: 500; color: {{tab.color}}; transition: color 0.2s ease-out">{{tab.label}}<span aria-hidden="true" style="position: absolute; left: 10px; right: 10px; bottom: -1px; height: 2px; border-radius: 2px; background: #7c6cff; transform: scaleX({{tab.scale}}); transition: transform 0.3s cubic-bezier(.2,.7,.2,1)"></span></a></sc-for>
+</nav>
+<sc-if value="{{isProjects}}" hint-placeholder-val="{{true}}">
+<header class="rise" style="animation-delay: 140ms"><h1 style="margin: 0; font-size: 26px; font-weight: 600; letter-spacing: -0.01em">Experience</h1><p style="margin: 8px 0 0; font-size: 15px; line-height: 1.6; color: #9aa0a8">Where I’ve worked, and what I built there.</p></header>
+<section class="rise" style="animation-delay: 260ms; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 600">Work</h2>
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px">
+<li class="card rise" style="animation-delay: 320ms; position: relative; background: #1b1e23; border: 1px solid #2a2e35; border-radius: 12px; padding: 20px 20px 20px 44px; display: flex; flex-direction: column; gap: 12px">
+<span aria-hidden="true" style="position: absolute; left: 20px; top: 27px; width: 10px; height: 10px; border-radius: 50%; background: #7c6cff; outline: 3px solid #2a2550"></span>
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; align-items: baseline"><h3 style="margin: 0; font-size: 17px; font-weight: 600">Software Engineering Fellow <span style="color: #9aa0a8; font-weight: 500">· TeSA Africa</span></h3><p style="margin: 0; font-size: 13px; color: #858b94">2026 – Present · Lagos</p></div>
+<ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.55; color: #c9cdd3"><li>Selected as one of 67 fellows from over 9,000 applicants for Cohort 6.</li><li>Built and deployed Chowly, a restaurant ordering platform with separate customer and waiter flows.</li><li>Wrote an architecture decision dossier for a national exam results platform, scored 96/100.</li><li>Designed payment flows that prevent double charges using idempotency keys and automatic reconciliation.</li></ul>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">Next.js</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">TypeScript</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">PostgreSQL</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">AWS</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">System design</span></div>
+</li>
+<li class="card rise" style="animation-delay: 430ms; position: relative; background: #1b1e23; border: 1px solid #2a2e35; border-radius: 12px; padding: 20px 20px 20px 44px; display: flex; flex-direction: column; gap: 12px">
+<span aria-hidden="true" style="position: absolute; left: 20px; top: 27px; width: 10px; height: 10px; border-radius: 50%; background: #7c6cff; outline: 3px solid #2a2550"></span>
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; align-items: baseline"><h3 style="margin: 0; font-size: 17px; font-weight: 600">Frontend Developer Intern <span style="color: #9aa0a8; font-weight: 500">· RWA Inc</span></h3><p style="margin: 0; font-size: 13px; color: #858b94">Apr – Oct 2026 · Remote</p></div>
+<ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.55; color: #c9cdd3"><li>Built the dashboard for Enter, an AI cloud IDE, including chat, projects and integrations.</li><li>Built reusable components with design tokens from a shared design system.</li><li>Turned Figma designs into responsive interfaces, working through pull requests and code review with a distributed team.</li></ul>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">Next.js</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">TypeScript</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">React</span></div><a href="MobileDark.dc.html" class="nudge" style="display: inline-flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 500; text-decoration: none">See Enter in Projects<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+</li>
+<li class="card rise" style="animation-delay: 540ms; position: relative; background: #1b1e23; border: 1px solid #2a2e35; border-radius: 12px; padding: 20px 20px 20px 44px; display: flex; flex-direction: column; gap: 12px">
+<span aria-hidden="true" style="position: absolute; left: 20px; top: 27px; width: 10px; height: 10px; border-radius: 50%; background: #7c6cff; outline: 3px solid #2a2550"></span>
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; align-items: baseline"><h3 style="margin: 0; font-size: 17px; font-weight: 600">Frontend Developer Intern <span style="color: #9aa0a8; font-weight: 500">· STX Technology</span></h3><p style="margin: 0; font-size: 13px; color: #858b94">May – Nov 2025 · Lagos</p></div>
+<ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.55; color: #c9cdd3"><li>Built and maintained websites with React, JavaScript, HTML and CSS.</li><li>Created reusable components shared across projects, with layouts that work on mobile, tablet and desktop.</li><li>Connected interfaces to live data through REST APIs with the backend team.</li></ul>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">React</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">JavaScript</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">CSS</span></div>
+</li>
+</ol>
+</section>
+<section class="rise" style="animation-delay: 700ms; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 600">Skills</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px"><div class="card" style="background: #1b1e23; border: 1px solid #2a2e35; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #b3a8ff">Frontend</h3><div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">React</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">Next.js</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">TypeScript</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">JavaScript</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">Tailwind CSS</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">HTML</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">CSS</span></div></div><div class="card" style="background: #1b1e23; border: 1px solid #2a2e35; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #b3a8ff">State and forms</h3><div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">Redux Toolkit</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">Zustand</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">React Hook Form</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">Zod</span></div></div><div class="card" style="background: #1b1e23; border: 1px solid #2a2e35; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #b3a8ff">Backend and data</h3><div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">PostgreSQL</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">Prisma</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">REST APIs</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">Data modelling</span></div></div><div class="card" style="background: #1b1e23; border: 1px solid #2a2e35; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #b3a8ff">Cloud and tools</h3><div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">AWS EC2</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">Render</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">Vercel</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">Git</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">Figma</span></div></div><div class="card" style="background: #1b1e23; border: 1px solid #2a2e35; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-size: 14px; font-weight: 600; color: #b3a8ff">System design</h3><div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">Idempotency</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">Caching</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">Message queues</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">Failure handling</span><span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2a2e35; color: #9aa0a8">Architecture Decision Records</span></div></div></div>
+</section>
+<section class="rise" style="animation-delay: 820ms; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 600">Education</h2>
+<div class="card" style="background: #1b1e23; border: 1px solid #2a2e35; border-radius: 12px; padding: 16px 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; align-items: baseline"><h3 style="margin: 0; font-size: 16px; font-weight: 600">Bachelor of Science (Education) <span style="color: #9aa0a8; font-weight: 500">· University of Ilorin</span></h3><p style="margin: 0; font-size: 13px; color: #858b94">2018 – 2023</p></div>
+</section>
+</sc-if>
+<sc-if value="{{notProjects}}" hint-placeholder-val="{{false}}"><div class="rise" style="border: 1px dashed #2a2e35; border-radius: 12px; padding: 40px 24px; text-align: center; display: flex; flex-direction: column; gap: 8px"><h1 style="margin: 0; font-size: 22px; font-weight: 600">{{activeLabel}}</h1><p style="margin: 0; font-size: 14px; color: #858b94">Next screen to design. Same shell, different content.</p></div></sc-if>
+<footer style="padding-top: 16px; border-top: 1px solid #2a2e35; font-size: 13px; color: #858b94">© 2026 Muizz Jamiu</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2960}}'>
+class Component extends DCLogic {
+renderVals() {
+const st = this.state || {};
+const active = st.active || 'experience';
+const hrefs = {"projects": "MobileDark.dc.html", "experience": "MobileExperience.dc.html", "about": "MobileAbout.dc.html", "contact": "#"};
+const labels = [['projects', 'Projects'], ['experience', 'Experience'], ['about', 'About'], ['contact', 'Contact']];
+const tabs = labels.map(([id, label]) => ({
+label,
+href: hrefs[id],
+current: id === active ? 'page' : 'false',
+color: id === active ? '#b3a8ff' : '#9aa0a8',
+scale: id === active ? 1 : 0,
+select: () => this.setState({ active: id })
+}));
+const open = !!st.open;
+return {
+tabs,
+isProjects: active === 'experience',
+notProjects: active !== 'experience',
+activeLabel: labels.find((l) => l[0] === active)[1],
+toggleContacts: () => this.setState({ open: !open }),
+contactsExpanded: open ? 'true' : 'false',
+contactsLabel: open ? 'Hide contacts' : 'Show contacts',
+contactsMax: open ? '320px' : '0px',
+contactsOpacity: open ? 1 : 0,
+contactsMargin: open ? '0px' : '-14px',
+chevTurn: open ? '180deg' : '0deg'
+};
+}
+}
+</script>
+</body>
+</html>

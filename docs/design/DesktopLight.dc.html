@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Portfolio projects, desktop, light</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.rot{display:inline-block;height:1.6em;overflow:hidden;vertical-align:bottom}
+.rot>span{display:block;animation:rot 7.5s cubic-bezier(.7,0,.2,1) infinite}
+.rot>span>span{display:block;height:1.6em;line-height:1.6em;font-weight:500;color:#4a35e0}
+@keyframes rot{0%,28%{transform:translateY(0)}33%,61%{transform:translateY(-1.6em)}66%,94%{transform:translateY(-3.2em)}100%{transform:translateY(-4.8em)}}
+.ping::after{content:"";position:absolute;inset:0;border-radius:50%;background:inherit;animation:ping 2s cubic-bezier(0,0,.2,1) infinite}
+@keyframes ping{75%,100%{transform:scale(2.6);opacity:0}}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;width:max-content;animation:marq 40s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(-50%)}}
+.type{white-space:pre-wrap;animation:type .8s steps(24) backwards}
+@keyframes type{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.cursor{display:inline-block;width:8px;height:15px;background:#b3a8ff;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion: reduce){.rot>span,.ping::after,.track,.type,.cursor{animation:none}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
+.rise{animation:rise .6s cubic-bezier(.2,.7,.2,1) backwards}
+.pop{animation:pop .6s cubic-bezier(.2,.7,.2,1) backwards}
+.card{transition:transform .25s ease-out,border-color .25s ease-out}
+.card:hover{transform:translateY(-4px);border-color:#5b46f0 !important}
+.shot{transition:transform .6s ease-out}
+.card:hover .shot{transform:scale(1.04)}
+.nudge svg{transition:transform .2s ease-out}
+.nudge:hover svg{transform:translate(2px,-2px)}
+@media (min-width: 900px){.side{position:sticky;top:24px}}
+.dot{animation:pulse 1.8s ease-in-out infinite}
+.btn{transition:transform .15s ease-out,filter .15s ease-out}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.1)}
+.btn:active{transform:scale(.97)}
+@media (prefers-reduced-motion: reduce){.rise,.pop,.dot{animation:none}.card,.shot,.btn,.nudge svg{transition:none}.card:hover,.card:hover .shot,.btn:hover{transform:none}}
+
+a{color:#4a35e0}a:hover{color:#3b27c4}
+</style>
+</helmet>
+<div style="min-height: 1700px; background: #f7f7f8; background-image: radial-gradient(ellipse 70% 45% at 65% -8%, rgba(91,70,240,0.12), transparent 70%), radial-gradient(rgba(21,23,26,0.08) 1px, transparent 1px); background-size: 100% 100%, 24px 24px; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #15171a; box-sizing: border-box">
+<div style="max-width: 1200px; margin: 0 auto; padding: 48px 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start">
+
+<aside class="rise side" style="flex: 1 1 280px; max-width: 320px; background: #ffffff; border: 1px solid #e4e5e9; border-radius: 16px; padding: 28px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
+<div class="pop" style="width: 112px; height: 112px; border-radius: 50%; background: #f1f2f4; outline: 2px solid #5b46f0; outline-offset: 3px; border: 1px solid #e4e5e9; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 500; color: #555b65">MJ</div>
+<div>
+<p style="margin: 0; font-size: 22px; font-weight: 600">Muizz Jamiu</p>
+<span style="display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 500; padding: 4px 10px; border-radius: 8px; background: #efedff; color: #4a35e0">Frontend Engineer</span>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 1.6; color: #555b65">I build interfaces that are <span class="rot" aria-hidden="true"><span><span>fast</span><span>accessible</span><span>reliable</span><span>fast</span></span></span><span class="sr">fast, accessible and reliable</span>.</p>
+<span style="display: inline-flex; align-items: center; gap: 8px; align-self: center; font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 999px; border: 1px solid #e4e5e9; color: #555b65"><span class="ping" aria-hidden="true" style="position: relative; width: 8px; height: 8px; border-radius: 50%; background: #16a34a"></span>Open to frontend roles</span>
+</div>
+<div style="height: 1px; background: #e4e5e9"></div>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px">
+<li style="display: flex; gap: 12px; align-items: center">
+<div style="width: 36px; height: 36px; flex: none; border-radius: 8px; background: #f1f2f4; color: #4a35e0; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></div>
+<div style="min-width: 0"><p style="margin: 0; font-size: 12px; color: #6b717a">Email</p><a href="mailto:opeyemimuizz@gmail.com" style="font-size: 14px; color: #15171a; text-decoration: none">opeyemimuizz@gmail.com</a></div>
+</li>
+<li style="display: flex; gap: 12px; align-items: center">
+<div style="width: 36px; height: 36px; flex: none; border-radius: 8px; background: #f1f2f4; color: #4a35e0; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></div>
+<div><p style="margin: 0; font-size: 12px; color: #6b717a">Location</p><p style="margin: 0; font-size: 14px">Lagos, Nigeria</p></div>
+</li>
+<li style="display: flex; gap: 12px; align-items: center">
+<div style="width: 36px; height: 36px; flex: none; border-radius: 8px; background: #f1f2f4; color: #4a35e0; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.3-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg></div>
+<div><p style="margin: 0; font-size: 12px; color: #6b717a">GitHub</p><a href="https://github.com/spr-tech" style="font-size: 14px; color: #15171a; text-decoration: none">github.com/spr-tech</a></div>
+</li>
+<li style="display: flex; gap: 12px; align-items: center">
+<div style="width: 36px; height: 36px; flex: none; border-radius: 8px; background: #f1f2f4; color: #4a35e0; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"></path></svg></div>
+<div><p style="margin: 0; font-size: 12px; color: #6b717a">LinkedIn</p><a href="https://linkedin.com/in/muizz-opeyemi" style="font-size: 14px; color: #15171a; text-decoration: none">in/muizz-opeyemi</a></div>
+</li>
+</ul>
+<div style="height: 1px; background: #e4e5e9"></div>
+<div style="display: flex; gap: 8px">
+<a href="#" class="btn" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; height: 44px; border-radius: 10px; background: #5b46f0; color: #ffffff; font-size: 14px; font-weight: 500; text-decoration: none"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>Download CV</a>
+<button type="button" aria-label="Switch to dark mode" style="width: 44px; height: 44px; padding: 0; border-radius: 10px; border: 1px solid #e4e5e9; background: #f1f2f4; color: #15171a; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg></button>
+</div>
+</aside>
+
+<main style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 32px">
+<nav aria-label="Sections" class="rise" style="animation-delay: 80ms; display: flex; gap: 4px; border-bottom: 1px solid #e4e5e9; overflow-x: auto">
+<sc-for list="{{tabs}}" as="tab" hint-placeholder-count="4"><button type="button" onClick="{{tab.select}}" aria-current="{{tab.current}}" style="position: relative; background: none; border: 0; cursor: pointer; font-family: inherit; padding: 12px 14px; font-size: 15px; font-weight: 500; color: {{tab.color}}; transition: color 0.2s ease-out">{{tab.label}}<span aria-hidden="true" style="position: absolute; left: 14px; right: 14px; bottom: -1px; height: 2px; border-radius: 2px; background: #5b46f0; transform: scaleX({{tab.scale}}); transition: transform 0.3s cubic-bezier(.2,.7,.2,1)"></span></button></sc-for>
+</nav>
+
+<sc-if value="{{isProjects}}" hint-placeholder-val="{{true}}">
+<header class="rise" style="animation-delay: 140ms">
+<h1 style="margin: 0; font-size: 32px; font-weight: 600; letter-spacing: -0.01em">Projects</h1>
+<p style="margin: 8px 0 0; font-size: 16px; line-height: 1.6; color: #555b65">Things I’ve built, and the decisions behind them.</p>
+</header>
+<div class="marquee rise" role="region" aria-label="Tools I build with" style="animation-delay: 200ms; border-top: 1px solid #e4e5e9; border-bottom: 1px solid #e4e5e9; padding: 14px 0"><div class="track"><div style="display: flex; gap: 32px; padding-right: 32px"><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>React</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>Next.js</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>TypeScript</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>Tailwind CSS</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>Redux Toolkit</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>Zustand</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>React Hook Form</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>Zod</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>PostgreSQL</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>Prisma</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>Vercel</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>Figma</span></div><div aria-hidden="true" style="display: flex; gap: 32px; padding-right: 32px"><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>React</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>Next.js</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>TypeScript</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>Tailwind CSS</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>Redux Toolkit</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>Zustand</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>React Hook Form</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>Zod</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>PostgreSQL</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>Prisma</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>Vercel</span><span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: #555b65; white-space: nowrap"><span aria-hidden="true" style="width: 5px; height: 5px; border-radius: 50%; background: #5b46f0"></span>Figma</span></div></div></div>
+
+
+<section class="rise" style="animation-delay: 260ms; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 600">Featured</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+
+<article class="card rise" style="animation-delay: 370ms; background: #ffffff; border: 1px solid #e4e5e9; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column">
+<div style="aspect-ratio: 16 / 10; background: #f1f2f4; border-bottom: 1px solid #e4e5e9; overflow: hidden"><img class="shot" src="/_blob/bc646d7a22537c551807582c26ce466b" alt="Flowboard landing page" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block"></div>
+<div style="padding: 20px; display: flex; flex-direction: column; gap: 14px; flex: 1">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+<h3 style="margin: 0; font-size: 18px; font-weight: 600">Flowboard</h3>
+<span style="font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 6px; background: #f1f2f4; color: #555b65">Solo project</span>
+</div>
+<dl style="margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px; line-height: 1.55">
+<div><dt style="font-size: 12px; font-weight: 500; color: #6b717a">Problem</dt><dd style="margin: 2px 0 0; color: #33373d">Teams need one place to plan projects and see who’s doing what.</dd></div>
+<div><dt style="font-size: 12px; font-weight: 500; color: #6b717a">Built</dt><dd style="margin: 2px 0 0; color: #33373d">A project management app with Kanban boards, priorities, due dates and team memberships.</dd></div>
+<div><dt style="font-size: 12px; font-weight: 500; color: #6b717a">Decision</dt><dd style="margin: 2px 0 0; color: #33373d">Permission checks run in server actions, so only owners and members can change a project.</dd></div>
+</dl>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #e4e5e9; color: #555b65">Next.js</span>
+<span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #e4e5e9; color: #555b65">TypeScript</span>
+<span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #e4e5e9; color: #555b65">Prisma</span>
+<span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #e4e5e9; color: #555b65">PostgreSQL</span>
+</div>
+<div style="display: flex; gap: 16px; margin-top: auto; padding-top: 4px">
+<a href="https://flowboard-app-five.vercel.app/" target="_blank" rel="noopener" class="nudge" style="display: inline-flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 500; text-decoration: none">Live site<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+<a href="https://github.com/spr-tech/flowboard-app" target="_blank" rel="noopener" style="font-size: 14px; font-weight: 500; color: #555b65; text-decoration: none">GitHub</a>
+</div>
+</div>
+</article>
+
+<article class="card rise" style="animation-delay: 480ms; background: #ffffff; border: 1px solid #e4e5e9; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column">
+<div style="aspect-ratio: 16 / 10; background: #f1f2f4; border-bottom: 1px solid #e4e5e9; overflow: hidden"><img class="shot" src="/_blob/eb4a93e624fd379183e61c42b930ab51" alt="Enter landing page" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block"></div>
+<div style="padding: 20px; display: flex; flex-direction: column; gap: 14px; flex: 1">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+<h3 style="margin: 0; font-size: 18px; font-weight: 600">Enter</h3>
+<span style="font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 6px; background: #f1f2f4; color: #555b65">Internship · RWA Inc</span>
+</div>
+<dl style="margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px; line-height: 1.55">
+<div><dt style="font-size: 12px; font-weight: 500; color: #6b717a">Problem</dt><dd style="margin: 2px 0 0; color: #33373d">Developers using an AI cloud IDE needed one dashboard for their workspaces and tools.</dd></div>
+<div><dt style="font-size: 12px; font-weight: 500; color: #6b717a">Built</dt><dd style="margin: 2px 0 0; color: #33373d">Dashboard screens, a real-time AI chat, and pages for connecting GitHub, Notion and Stripe.</dd></div>
+<div><dt style="font-size: 12px; font-weight: 500; color: #6b717a">Decision</dt><dd style="margin: 2px 0 0; color: #33373d">[One decision you made and why]</dd></div>
+</dl>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #e4e5e9; color: #555b65">Next.js</span>
+<span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #e4e5e9; color: #555b65">TypeScript</span>
+</div>
+<div style="display: flex; gap: 16px; margin-top: auto; padding-top: 4px">
+<a href="https://enter.software/" target="_blank" rel="noopener" class="nudge" style="display: inline-flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 500; text-decoration: none">Live site<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+</div>
+</div>
+</article>
+
+</div>
+</section>
+
+<section class="rise" style="animation-delay: 380ms; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 600">Team projects</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+
+<article class="card rise" style="animation-delay: 590ms; background: #ffffff; border: 1px solid #e4e5e9; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<div style="aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; border: 1px solid #e4e5e9"><img class="shot" src="/_blob/813ef96a23965be037e98c5567d369c4" alt="FoodBridge landing page" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block"></div>
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+<h3 style="margin: 0; font-size: 17px; font-weight: 600">FoodBridge</h3>
+<span style="font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 6px; background: #efedff; color: #4a35e0">Capstone project</span>
+</div>
+<p style="margin: 0; font-size: 13px; color: #6b717a">Team of three · Interface engineer</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #33373d">Connects surplus food with people who need it. I built the request flow: pending, approved, declined, expired and cancelled.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #33373d"><span style="color: #6b717a">Decision:</span> users see messages the frontend writes, never backend internals.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #e4e5e9; color: #555b65">React</span>
+<span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #e4e5e9; color: #555b65">TypeScript</span>
+<span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #e4e5e9; color: #555b65">RTK Query</span>
+</div>
+<div style="display: flex; gap: 16px; margin-top: auto">
+<a href="https://food-bridge-ruby.vercel.app/" target="_blank" rel="noopener" style="font-size: 14px; font-weight: 500; text-decoration: none">Live site</a>
+<a href="https://github.com/spr-tech/food-bridge" target="_blank" rel="noopener" style="font-size: 14px; font-weight: 500; color: #555b65; text-decoration: none">GitHub</a>
+</div>
+</article>
+
+<article class="card rise" style="animation-delay: 700ms; background: #ffffff; border: 1px solid #e4e5e9; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<div style="aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; border: 1px solid #e4e5e9"><img class="shot" src="/_blob/62f43b86f7bf57a723ce2cd40ebf5ae4" alt="EkoWatch landing page" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block"></div>
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+<h3 style="margin: 0; font-size: 17px; font-weight: 600">EkoWatch</h3>
+<span style="font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 6px; background: #efedff; color: #4a35e0">Capstone project</span>
+</div>
+<p style="margin: 0; font-size: 13px; color: #6b717a">Team project · Interface engineer</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #33373d">Lets Lagos residents report flooded roads and missed waste collection, for operators and authorities to act on.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #33373d"><span style="color: #6b717a">Decision:</span> one sidebar layout shared by residents, waste operators and authorities.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #e4e5e9; color: #555b65">React</span>
+<span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #e4e5e9; color: #555b65">TypeScript</span>
+<span style="font-size: 12px; padding: 3px 8px; border-radius: 6px; border: 1px solid #e4e5e9; color: #555b65">RTK Query</span>
+</div>
+<div style="display: flex; gap: 16px; margin-top: auto">
+<a href="https://eko-watch.qocent.app/" target="_blank" rel="noopener" style="font-size: 14px; font-weight: 500; text-decoration: none">Live site</a>
+<a href="https://github.com/spr-tech/eko-watch-final" target="_blank" rel="noopener" style="font-size: 14px; font-weight: 500; color: #555b65; text-decoration: none">GitHub</a>
+</div>
+</article>
+
+</div>
+</section>
+
+</sc-if>
+<sc-if value="{{notProjects}}" hint-placeholder-val="{{false}}"><div class="rise" style="border: 1px dashed #e4e5e9; border-radius: 12px; padding: 40px 24px; text-align: center; display: flex; flex-direction: column; gap: 8px"><h1 style="margin: 0; font-size: 22px; font-weight: 600">{{activeLabel}}</h1><p style="margin: 0; font-size: 14px; color: #6b717a">Next screen to design. Same shell, different content.</p></div></sc-if>
+<footer style="padding-top: 16px; border-top: 1px solid #e4e5e9; font-size: 13px; color: #6b717a">© 2026 Muizz Jamiu</footer>
+</main>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1700}}'>
+class Component extends DCLogic {
+renderVals() {
+const st = this.state || {};
+const active = st.active || 'projects';
+const labels = [['projects', 'Projects'], ['experience', 'Experience'], ['about', 'About'], ['contact', 'Contact']];
+const tabs = labels.map(([id, label]) => ({
+label,
+current: id === active ? 'page' : 'false',
+color: id === active ? '#4a35e0' : '#555b65',
+scale: id === active ? 1 : 0,
+select: () => this.setState({ active: id })
+}));
+const open = !!st.open;
+return {
+tabs,
+isProjects: active === 'projects',
+notProjects: active !== 'projects',
+activeLabel: labels.find((l) => l[0] === active)[1],
+toggleContacts: () => this.setState({ open: !open }),
+contactsExpanded: open ? 'true' : 'false',
+contactsLabel: open ? 'Hide contacts' : 'Show contacts',
+contactsMax: open ? '320px' : '0px',
+contactsOpacity: open ? 1 : 0,
+contactsMargin: open ? '0px' : '-14px',
+chevTurn: open ? '180deg' : '0deg'
+};
+}
+}
+</script>
+</body>
+</html>

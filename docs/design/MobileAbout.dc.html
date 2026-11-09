@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Portfolio about, mobile, dark</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.rot{display:inline-block;height:1.6em;overflow:hidden;vertical-align:bottom}
+.rot>span{display:block;animation:rot 7.5s cubic-bezier(.7,0,.2,1) infinite}
+.rot>span>span{display:block;height:1.6em;line-height:1.6em;font-weight:500;color:#b3a8ff}
+@keyframes rot{0%,28%{transform:translateY(0)}33%,61%{transform:translateY(-1.6em)}66%,94%{transform:translateY(-3.2em)}100%{transform:translateY(-4.8em)}}
+.ping::after{content:"";position:absolute;inset:0;border-radius:50%;background:inherit;animation:ping 2s cubic-bezier(0,0,.2,1) infinite}
+@keyframes ping{75%,100%{transform:scale(2.6);opacity:0}}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;width:max-content;animation:marq 40s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(-50%)}}
+.type{white-space:pre-wrap;animation:type .8s steps(24) backwards}
+@keyframes type{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.cursor{display:inline-block;width:8px;height:15px;background:#b3a8ff;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion: reduce){.rot>span,.ping::after,.track,.type,.cursor{animation:none}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
+.rise{animation:rise .6s cubic-bezier(.2,.7,.2,1) backwards}
+.pop{animation:pop .6s cubic-bezier(.2,.7,.2,1) backwards}
+.card{transition:transform .25s ease-out,border-color .25s ease-out}
+.card:hover{transform:translateY(-4px);border-color:#7c6cff !important}
+.shot{transition:transform .6s ease-out}
+.card:hover .shot{transform:scale(1.04)}
+.nudge svg{transition:transform .2s ease-out}
+.nudge:hover svg{transform:translate(2px,-2px)}
+.dot{animation:pulse 1.8s ease-in-out infinite}
+.btn{transition:transform .15s ease-out,filter .15s ease-out}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.1)}
+.btn:active{transform:scale(.97)}
+@media (prefers-reduced-motion: reduce){.rise,.pop,.dot{animation:none}.card,.shot,.btn,.nudge svg{transition:none}.card:hover,.card:hover .shot,.btn:hover{transform:none}}
+
+a{color:#b3a8ff}a:hover{color:#d4ccff}
+</style>
+</helmet>
+<div style="width: 390px; height: 2460px; box-sizing: border-box; background: #121417; background-image: radial-gradient(ellipse 70% 45% at 65% -8%, rgba(124,108,255,0.22), transparent 70%), radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 100% 100%, 24px 24px; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #e7e9ec; padding: 16px; display: flex; flex-direction: column; gap: 24px; overflow: hidden">
+<section aria-label="Profile" class="rise" style="background: #1b1e23; border: 1px solid #2a2e35; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; gap: 12px">
+<div class="pop" style="width: 56px; height: 56px; flex: none; border-radius: 50%; background: #22262c; outline: 2px solid #7c6cff; outline-offset: 3px; border: 1px solid #2a2e35; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 500; color: #9aa0a8">MJ</div>
+<div style="flex: 1; min-width: 0">
+<p style="margin: 0; font-size: 18px; font-weight: 600">Muizz Jamiu</p>
+<span style="display: inline-block; margin-top: 4px; font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 6px; background: #2a2550; color: #b3a8ff">Frontend Engineer</span>
+</div>
+<button type="button" aria-label="Switch to light mode" style="width: 44px; height: 44px; flex: none; padding: 0; border-radius: 10px; border: 1px solid #2a2e35; background: #22262c; color: #e7e9ec; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></button>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 1.6; color: #9aa0a8">I build interfaces that are <span class="rot" aria-hidden="true"><span><span>fast</span><span>accessible</span><span>reliable</span><span>fast</span></span></span><span class="sr">fast, accessible and reliable</span>.</p>
+<span style="display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 999px; border: 1px solid #2a2e35; color: #9aa0a8"><span class="ping" aria-hidden="true" style="position: relative; width: 8px; height: 8px; border-radius: 50%; background: #4ade80"></span>Open to frontend roles</span>
+<div style="display: flex; gap: 8px">
+<button type="button" onClick="{{toggleContacts}}" aria-expanded="{{contactsExpanded}}" style="flex: 1; height: 44px; border-radius: 10px; border: 1px solid #2a2e35; background: #22262c; color: #e7e9ec; font-family: inherit; font-size: 14px; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer">{{contactsLabel}}<svg aria-hidden="true" style="transform: rotate({{chevTurn}}); transition: transform 0.3s ease-out" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></button>
+<a href="#" class="btn" style="flex: 1; height: 44px; border-radius: 10px; background: #7c6cff; color: #0e0b24; font-size: 14px; font-weight: 500; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>Download CV</a>
+</div>
+<div style="max-height: {{contactsMax}}; opacity: {{contactsOpacity}}; margin-top: {{contactsMargin}}; overflow: hidden; transition: max-height 0.35s ease-out, opacity 0.3s ease-out, margin-top 0.35s ease-out">
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px">
+<li style="display: flex; gap: 12px; align-items: center">
+<div style="width: 36px; height: 36px; flex: none; border-radius: 8px; background: #22262c; color: #b3a8ff; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></div>
+<div style="min-width: 0"><p style="margin: 0; font-size: 12px; color: #858b94">Email</p><a href="mailto:opeyemimuizz@gmail.com" style="font-size: 14px; color: #e7e9ec; text-decoration: none">opeyemimuizz@gmail.com</a></div>
+</li>
+<li style="display: flex; gap: 12px; align-items: center">
+<div style="width: 36px; height: 36px; flex: none; border-radius: 8px; background: #22262c; color: #b3a8ff; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></div>
+<div><p style="margin: 0; font-size: 12px; color: #858b94">Location</p><p style="margin: 0; font-size: 14px">Lagos, Nigeria</p></div>
+</li>
+<li style="display: flex; gap: 12px; align-items: center">
+<div style="width: 36px; height: 36px; flex: none; border-radius: 8px; background: #22262c; color: #b3a8ff; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.3-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg></div>
+<div><p style="margin: 0; font-size: 12px; color: #858b94">GitHub</p><a href="https://github.com/spr-tech" style="font-size: 14px; color: #e7e9ec; text-decoration: none">github.com/spr-tech</a></div>
+</li>
+<li style="display: flex; gap: 12px; align-items: center">
+<div style="width: 36px; height: 36px; flex: none; border-radius: 8px; background: #22262c; color: #b3a8ff; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"></path></svg></div>
+<div><p style="margin: 0; font-size: 12px; color: #858b94">LinkedIn</p><a href="https://linkedin.com/in/muizz-opeyemi" style="font-size: 14px; color: #e7e9ec; text-decoration: none">in/muizz-opeyemi</a></div>
+</li>
+</ul>
+</div>
+</section>
+<nav aria-label="Sections" class="rise" style="animation-delay: 80ms; display: flex; gap: 2px; border-bottom: 1px solid #2a2e35; margin-top: -8px">
+<sc-for list="{{tabs}}" as="tab" hint-placeholder-count="4"><a href="{{tab.href}}" onClick="{{tab.select}}" aria-current="{{tab.current}}" style="position: relative; display: inline-block; text-decoration: none; background: none; border: 0; cursor: pointer; font-family: inherit; padding: 12px 10px; font-size: 14px; font-weight: 500; color: {{tab.color}}; transition: color 0.2s ease-out">{{tab.label}}<span aria-hidden="true" style="position: absolute; left: 10px; right: 10px; bottom: -1px; height: 2px; border-radius: 2px; background: #7c6cff; transform: scaleX({{tab.scale}}); transition: transform 0.3s cubic-bezier(.2,.7,.2,1)"></span></a></sc-for>
+</nav>
+<sc-if value="{{isProjects}}" hint-placeholder-val="{{true}}">
+<header class="rise" style="animation-delay: 140ms"><h1 style="margin: 0; font-size: 26px; font-weight: 600; letter-spacing: -0.01em">About</h1><p style="margin: 8px 0 0; font-size: 15px; line-height: 1.6; color: #9aa0a8">A bit about me and how I work.</p></header>
+<section class="rise" style="animation-delay: 260ms; display: flex; flex-direction: column; gap: 14px; max-width: 680px">
+<p style="margin: 0; font-size: 15px; line-height: 1.7; color: #c9cdd3">I’m a frontend engineer in Lagos. I build fast, accessible web apps with React, Next.js and TypeScript.</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.7; color: #c9cdd3">I also care about what happens beyond the screen: clear requirements, a sound data model, and how a system behaves when something fails. That’s what draws me to products where reliability matters, like payments, where a double charge isn’t a small bug.</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.7; color: #c9cdd3">Right now I’m a Software Engineering Fellow at TeSA Africa, training in system design, cloud deployment and backend fundamentals.</p>
+</section>
+<section class="rise" aria-label="Terminal intro" style="animation-delay: 320ms; background: #0d0f12; border: 1px solid #2a2e35; border-radius: 12px; overflow: hidden; max-width: 680px">
+<div style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid #2a2e35; background: #15181c"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57"></span><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #febc2e"></span><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #28c840"></span><span style="margin-left: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #858b94">muizz@lagos: ~</span></div>
+<div style="padding: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; line-height: 1.75"><div class="type" style="animation-delay: 0.6s; color: #e7e9ec"><span style="color: #b3a8ff">$</span> whoami</div><div class="type" style="animation-delay: 1.5s; color: #9aa0a8">Muizz Jamiu, frontend engineer in Lagos</div><div class="type" style="animation-delay: 2.0s; color: #e7e9ec"><span style="color: #b3a8ff">$</span> cat stack.txt</div><div class="type" style="animation-delay: 2.9s; color: #9aa0a8">React · Next.js · TypeScript · Tailwind CSS</div><div class="type" style="animation-delay: 3.4s; color: #e7e9ec"><span style="color: #b3a8ff">$</span> npm run build</div><div class="type" style="animation-delay: 4.3s; color: #4ade80">✓ Compiled successfully</div><div class="type" style="animation-delay: 4.6s; color: #4ade80">✓ Ready for the next project</div><div class="type" style="animation-delay: 5s; color: #e7e9ec"><span style="color: #b3a8ff">$</span> <span class="cursor" aria-hidden="true"></span></div></div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 16px">
+<h2 class="rise" style="animation-delay: 360ms; margin: 0; font-size: 18px; font-weight: 600">How I work</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px"><div class="card rise" style="animation-delay: 420ms; background: #1b1e23; border: 1px solid #2a2e35; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 12px"><div style="width: 40px; height: 40px; border-radius: 10px; background: #2a2550; color: #b3a8ff; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"></ellipse><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"></path></svg></div><h3 style="margin: 0; font-size: 16px; font-weight: 600">Data first</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #c9cdd3">I model the data and requirements before building a screen, so the interface isn’t built on guesses.</p></div><div class="card rise" style="animation-delay: 530ms; background: #1b1e23; border: 1px solid #2a2e35; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 12px"><div style="width: 40px; height: 40px; border-radius: 10px; background: #2a2550; color: #b3a8ff; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.4 3 8.3 7 10 4-1.7 7-5.6 7-10V6z"></path><path d="m9 12 2 2 4-4"></path></svg></div><h3 style="margin: 0; font-size: 16px; font-weight: 600">Plan for failure</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #c9cdd3">Retries, idempotency and clear error states are part of the feature, not an afterthought.</p></div><div class="card rise" style="animation-delay: 640ms; background: #1b1e23; border: 1px solid #2a2e35; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 12px"><div style="width: 40px; height: 40px; border-radius: 10px; background: #2a2550; color: #b3a8ff; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 4 14h7l-1 7 9-11h-7z"></path></svg></div><h3 style="margin: 0; font-size: 16px; font-weight: 600">Fast and accessible</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #c9cdd3">Pages should load quickly and work with a keyboard and a screen reader.</p></div></div>
+</section>
+<section class="rise" style="animation-delay: 800ms; background: #1b1e23; border: 1px solid #2a2e35; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 600">Currently</h2>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.55; color: #c9cdd3"><li style="display: flex; gap: 10px; align-items: flex-start"><span aria-hidden="true" style="margin-top: 8px; width: 6px; height: 6px; flex: none; border-radius: 50%; background: #7c6cff"></span><span>Software Engineering Fellow at TeSA Africa, Cohort 6</span></li><li style="display: flex; gap: 10px; align-items: flex-start"><span aria-hidden="true" style="margin-top: 8px; width: 6px; height: 6px; flex: none; border-radius: 50%; background: #7c6cff"></span><span>Building FoodBridge and EkoWatch with my capstone team</span></li><li style="display: flex; gap: 10px; align-items: flex-start"><span aria-hidden="true" style="margin-top: 8px; width: 6px; height: 6px; flex: none; border-radius: 50%; background: #7c6cff"></span><span>Open to frontend engineering roles</span></li></ul>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px">
+<a href="#" class="btn" style="display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px; border-radius: 10px; background: #7c6cff; color: #0e0b24; font-size: 14px; font-weight: 500; text-decoration: none">Download CV</a>
+<a href="#" class="btn" style="display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: 10px; border: 1px solid #2a2e35; background: #22262c; color: #e7e9ec; font-size: 14px; font-weight: 500; text-decoration: none">Get in touch</a>
+</div>
+</section>
+</sc-if>
+<sc-if value="{{notProjects}}" hint-placeholder-val="{{false}}"><div class="rise" style="border: 1px dashed #2a2e35; border-radius: 12px; padding: 40px 24px; text-align: center; display: flex; flex-direction: column; gap: 8px"><h1 style="margin: 0; font-size: 22px; font-weight: 600">{{activeLabel}}</h1><p style="margin: 0; font-size: 14px; color: #858b94">Next screen to design. Same shell, different content.</p></div></sc-if>
+<footer style="padding-top: 16px; border-top: 1px solid #2a2e35; font-size: 13px; color: #858b94">© 2026 Muizz Jamiu</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2460}}'>
+class Component extends DCLogic {
+renderVals() {
+const st = this.state || {};
+const active = st.active || 'about';
+const hrefs = {"projects": "MobileDark.dc.html", "experience": "MobileExperience.dc.html", "about": "MobileAbout.dc.html", "contact": "#"};
+const labels = [['projects', 'Projects'], ['experience', 'Experience'], ['about', 'About'], ['contact', 'Contact']];
+const tabs = labels.map(([id, label]) => ({
+label,
+href: hrefs[id],
+current: id === active ? 'page' : 'false',
+color: id === active ? '#b3a8ff' : '#9aa0a8',
+scale: id === active ? 1 : 0,
+select: () => this.setState({ active: id })
+}));
+const open = !!st.open;
+return {
+tabs,
+isProjects: active === 'about',
+notProjects: active !== 'about',
+activeLabel: labels.find((l) => l[0] === active)[1],
+toggleContacts: () => this.setState({ open: !open }),
+contactsExpanded: open ? 'true' : 'false',
+contactsLabel: open ? 'Hide contacts' : 'Show contacts',
+contactsMax: open ? '320px' : '0px',
+contactsOpacity: open ? 1 : 0,
+contactsMargin: open ? '0px' : '-14px',
+chevTurn: open ? '180deg' : '0deg'
+};
+}
+}
+</script>
+</body>
+</html>
