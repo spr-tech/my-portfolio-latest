@@ -1,1 +1,114 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #f7f7f8;
+  --surface: #ffffff;
+  --surface-raised: #f1f2f4;
+  --border: #e4e5e9;
+  --text-primary: #15171a;
+  --text-body: #33373d;
+  --text-secondary: #555b65;
+  --text-muted: #6b717a;
+  --accent: #5b46f0;
+  --accent-text: #4a35e0;
+  --accent-subtle: #efedff;
+  --accent-foreground: #ffffff;
+  --danger: #dc2626;
+  --success: #16a34a;
+
+  /* The About terminal stays dark in both themes, so these never change in .dark. */
+  --terminal-bg: #0d0f12;
+  --terminal-bar: #15181c;
+  --terminal-border: #2a2e35;
+  --terminal-text: #e7e9ec;
+  --terminal-muted: #9aa0a8;
+  --terminal-caption: #858b94;
+  --terminal-prompt: #b3a8ff;
+  --terminal-success: #4ade80;
+  --terminal-dot-red: #ff5f57;
+  --terminal-dot-yellow: #febc2e;
+  --terminal-dot-green: #28c840;
+
+  /* Page background: dot grid plus a soft accent glow at the top. */
+  --page-dot: color-mix(in srgb, var(--text-primary) 8%, transparent);
+  --page-glow: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.dark {
+  --bg: #121417;
+  --surface: #1b1e23;
+  --surface-raised: #22262c;
+  --border: #2a2e35;
+  --text-primary: #e7e9ec;
+  --text-body: #c9cdd3;
+  --text-secondary: #9aa0a8;
+  --text-muted: #858b94;
+  --accent: #7c6cff;
+  --accent-text: #b3a8ff;
+  --accent-subtle: #2a2550;
+  --accent-foreground: #0e0b24;
+  --danger: #f87171;
+  --success: #4ade80;
+
+  --page-dot: color-mix(in srgb, var(--text-primary) 7%, transparent);
+  --page-glow: color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-border: var(--border);
+  --color-text-primary: var(--text-primary);
+  --color-text-body: var(--text-body);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+
+  --color-terminal-bg: var(--terminal-bg);
+  --color-terminal-bar: var(--terminal-bar);
+  --color-terminal-border: var(--terminal-border);
+  --color-terminal-text: var(--terminal-text);
+  --color-terminal-muted: var(--terminal-muted);
+  --color-terminal-caption: var(--terminal-caption);
+  --color-terminal-prompt: var(--terminal-prompt);
+  --color-terminal-success: var(--terminal-success);
+  --color-terminal-dot-red: var(--terminal-dot-red);
+  --color-terminal-dot-yellow: var(--terminal-dot-yellow);
+  --color-terminal-dot-green: var(--terminal-dot-green);
+
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
+
+  --ease-entrance: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@layer base {
+  body {
+    min-height: 100dvh;
+    background-color: var(--bg);
+    background-image:
+      radial-gradient(ellipse 70% 45% at 65% -8%, var(--page-glow), transparent 70%),
+      radial-gradient(var(--page-dot) 1px, transparent 1px);
+    background-size:
+      100% 100%,
+      24px 24px;
+    background-repeat: no-repeat, repeat;
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}

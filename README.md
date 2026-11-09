@@ -2,7 +2,7 @@
 
 Portfolio site for Muizz Jamiu, a frontend engineer in Lagos.
 
-Live site: [LIVE_URL]
+Live site: https://my-portfolio-latest.qocent.app/
 
 ## Stack
 
