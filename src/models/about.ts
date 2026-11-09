@@ -27,7 +27,7 @@ export type AboutPage = PageIntro & {
   currently: {
     title: string;
     items: string[];
+    /** Opens an email to profile.email with its subject filled in. */
     contactLabel: string;
-    contactHref: string;
   };
 };

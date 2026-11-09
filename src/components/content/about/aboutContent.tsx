@@ -9,6 +9,7 @@ import { Text } from "@/components/ui/typography/text";
 import { aboutPage } from "@/data/about";
 import { profile } from "@/data/profile";
 import type { PrincipleIcon } from "@/models/about";
+import { buildMailtoHref } from "@/utilities/helpers/mailto";
 
 const principleIcons: Record<PrincipleIcon, ComponentType<SVGProps<SVGSVGElement>>> = {
   data: DatabaseIcon,
@@ -77,7 +78,7 @@ export function AboutContent() {
           >
             {profile.cv.label}
           </Button>
-          <Button href={currently.contactHref} variant="secondary">
+          <Button href={buildMailtoHref(profile.email.address, profile.email.subject)} variant="secondary">
             {currently.contactLabel}
           </Button>
         </div>

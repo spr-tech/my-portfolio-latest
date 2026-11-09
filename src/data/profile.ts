@@ -1,6 +1,8 @@
 import profilePhoto from "@/assets/images/profile/muizz.png";
 import type { Profile } from "@/models/profile";
 
+const emailAddress = "opeyemimuizz@gmail.com";
+
 export const profile: Profile = {
   name: "Muizz Jamiu",
   role: "Frontend Engineer",
@@ -14,12 +16,16 @@ export const profile: Profile = {
     accessibleText: "I build interfaces that are fast, accessible and reliable.",
   },
   status: "Open to frontend roles",
+  email: {
+    address: emailAddress,
+    subject: "Hello from your portfolio",
+  },
   contacts: [
     {
       kind: "email",
       label: "Email",
-      value: "opeyemimuizz@gmail.com",
-      href: "mailto:opeyemimuizz@gmail.com",
+      value: emailAddress,
+      href: `mailto:${emailAddress}`,
     },
     {
       kind: "location",

@@ -8,5 +8,4 @@ export const navigationTabs: NavigationTab[] = [
   { label: "Projects", href: "/" },
   { label: "Experience", href: "/experience" },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
 ];
