@@ -48,7 +48,8 @@ export function ContactsDisclosure({ showLabel, hideLabel, cvButton, children }:
       <div
         id={listId}
         className={cn(
-          "lg:border-y lg:border-border lg:py-5",
+          // The animation replays each time the list goes from hidden to shown (mobile only).
+          "max-lg:motion-safe:animate-dropdown lg:border-y lg:border-border lg:py-5",
           // display:none also removes the links from the tab order and screen readers.
           !isOpen && "max-lg:hidden",
         )}

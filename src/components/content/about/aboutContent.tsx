@@ -10,6 +10,7 @@ import { aboutPage } from "@/data/about";
 import { profile } from "@/data/profile";
 import type { PrincipleIcon } from "@/models/about";
 import { buildMailtoHref } from "@/utilities/helpers/mailto";
+import { riseDelay, staggerDelay } from "@/utilities/helpers/riseDelay";
 
 const principleIcons: Record<PrincipleIcon, ComponentType<SVGProps<SVGSVGElement>>> = {
   data: DatabaseIcon,
@@ -24,7 +25,7 @@ export function AboutContent() {
     <>
       <div className="flex flex-col gap-6">
         <PageHeader intro={aboutPage} />
-        <div className="flex max-w-170 flex-col gap-3.5">
+        <div className="rise-on-load flex max-w-170 flex-col gap-3.5" style={riseDelay(260)}>
           {aboutPage.bio.map((paragraph) => (
             <Text key={paragraph} className="leading-[1.7]">
               {paragraph}
@@ -33,18 +34,29 @@ export function AboutContent() {
         </div>
       </div>
 
-      <TerminalCard terminal={aboutPage.terminal} />
+      <TerminalCard terminal={aboutPage.terminal} className="rise-on-load" style={riseDelay(320)} />
 
       <section aria-labelledby="principles-heading" className="flex flex-col gap-4">
-        <Text as="h2" size="heading" id="principles-heading">
+        <Text
+          as="h2"
+          size="heading"
+          id="principles-heading"
+          className="rise-on-load"
+          style={riseDelay(360)}
+        >
           {aboutPage.principlesTitle}
         </Text>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,12.5rem),1fr))] gap-4">
-          {aboutPage.principles.map((principle) => {
+          {aboutPage.principles.map((principle, index) => {
             const Icon = principleIcons[principle.icon];
 
             return (
-              <Card key={principle.title} isInteractive className="flex flex-col gap-3">
+              <Card
+                key={principle.title}
+                isInteractive
+                className="rise-on-load flex flex-col gap-3"
+                style={staggerDelay(420, index)}
+              >
                 <span className="flex size-10 items-center justify-center rounded-lg bg-accent-subtle text-accent-text">
                   <Icon className="size-5" />
                 </span>
@@ -58,7 +70,12 @@ export function AboutContent() {
         </div>
       </section>
 
-      <Card as="section" aria-labelledby="currently-heading" className="flex flex-col gap-3.5">
+      <Card
+        as="section"
+        aria-labelledby="currently-heading"
+        className="rise-on-load flex flex-col gap-3.5"
+        style={riseDelay(800)}
+      >
         <Text as="h2" size="heading" id="currently-heading">
           {currently.title}
         </Text>

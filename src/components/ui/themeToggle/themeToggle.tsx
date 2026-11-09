@@ -34,7 +34,13 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
   }
 
   const isDark = resolvedTheme === "dark";
-  const handleClick = () => setTheme(isDark ? "light" : "dark");
+  const handleClick = () => {
+    // The class turns on 200ms colour transitions for this switch only (see globals.css).
+    const root = document.documentElement;
+    root.classList.add("theme-transition");
+    setTheme(isDark ? "light" : "dark");
+    window.setTimeout(() => root.classList.remove("theme-transition"), 250);
+  };
 
   return (
     <Button

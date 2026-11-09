@@ -35,6 +35,8 @@ export type ProjectsPage = PageIntro & {
   featuredTitle: string;
   teamTitle: string;
   toolsLabel: string;
+  /** Screen-reader label for the pause toggle on the tools strip; aria-pressed says if it's on. */
+  toolsPauseLabel: string;
   labels: {
     problem: string;
     built: string;

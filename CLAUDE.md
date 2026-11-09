@@ -76,6 +76,7 @@ src/
 ├── app/                          # Routing only. Thin files.
 │   ├── layout.tsx                # Font, metadata, ThemeProvider, AppShell
 │   ├── globals.css               # Tailwind import, theme tokens
+│   ├── template.tsx              # Per-tab wrapper for the tab-change fade
 │   ├── page.tsx                  # Projects tab
 │   ├── experience/page.tsx
 │   ├── about/page.tsx
@@ -140,6 +141,7 @@ src/
 └── utilities/
     ├── helpers/cn.ts
     ├── helpers/mailto.ts         # mailto: link with an encoded subject
+    ├── helpers/riseDelay.ts      # Inline delays for the staggered entrance
     ├── constants/navigation.ts   # Tab list: label + href
     └── constants/site.ts         # Public site URL for metadata
 ```
@@ -281,19 +283,19 @@ A little motion, never decorative noise. Every animation must have a reason.
 
 | Where              | What                                                         | Duration          |
 | ------------------ | ------------------------------------------------------------ | ----------------- |
-| Page load          | Sidebar, tabs, heading, then cards fade in and rise 14px, staggered ~110ms apart | ~600ms each |
+| Page load          | Sidebar, tabs, heading, then cards fade in and rise 14px, staggered ~110ms apart (first load only) | ~600ms each |
 | Profile photo      | Pops in from 90% scale (rounded square, no ring)             | ~600ms            |
-| Tab bar            | Active underline scales in under the new tab (`layoutId` or scaleX) | ~300ms     |
-| Tab content        | Fades and rises 8px on route change                          | ~200ms            |
+| Tab bar            | Floating pill; the active tab gets an `--accent-subtle` background that fades in | ~200ms |
+| Tab content        | Fades and rises 8px on every tab change (not on first load)  | ~200ms            |
 | Cards              | On hover: lift 4px, border turns `--accent`, screenshot zooms to 104% | ~250ms   |
 | Links with arrows  | Arrow nudges up-right 2px on hover                           | ~200ms            |
 | Buttons            | Lift 1px and brighten on hover, scale to 97% when pressed    | ~150ms            |
 | Theme switch       | Colours transition, no flash                                 | ~200ms            |
-| Mobile contacts    | Dropdown expands, chevron rotates 180°                       | ~350ms            |
+| Mobile contacts    | Dropdown fades in and slides down 8px, chevron rotates 180°  | ~350ms            |
 | Page background    | Static dot grid with a soft accent glow at the top (not animated) | —            |
 | Sidebar tagline    | "I build interfaces that are fast / accessible / reliable": the last word slides up to the next | 7.5s loop |
 | Status pill        | "Open to frontend roles" with a green dot that pings outward | 2s loop           |
-| Tools strip        | Projects tab: tool names scroll sideways in a marquee, pauses on hover | 40s loop |
+| Tools strip        | Projects tab: tool names scroll sideways in a marquee, pauses on hover; a pause button (`aria-pressed`) stops it for keyboard and touch | 40s loop |
 | About terminal     | Lines type out one by one, then a blinking cursor            | ~5s, cursor loops |
 
 Rules:
@@ -305,8 +307,17 @@ Rules:
   cursor). No other looping animation. Every loop stops under `prefers-reduced-motion`.
 - The rotating tagline word is `aria-hidden`; screen readers get the full sentence from visually
   hidden text instead. The marquee's duplicated copy is also `aria-hidden`.
-- Respect `prefers-reduced-motion`: use `useReducedMotion()` from `motion/react` and the Tailwind
-  `motion-safe:` / `motion-reduce:` variants. With reduced motion, things appear instantly.
+- Respect `prefers-reduced-motion`: every animation is behind `motion-safe:` or a
+  `prefers-reduced-motion: no-preference` media query. With reduced motion, things appear instantly.
+- All animation is CSS (keyframes in `src/app/globals.css`); no animation JavaScript ships. If a
+  future animation needs `motion`, use `useReducedMotion()` from `motion/react`.
+- How first load and tab changes differ: elements with the `rise-on-load` class run the staggered
+  entrance; `src/app/template.tsx` wraps each tab in `page-enter`. The tab bar sets
+  `<html data-navigated>` on the first tab change, which turns `rise-on-load` off and `page-enter`
+  on. Next keeps visited tabs mounted but hidden (`cacheComponents` uses `<Activity>`), and a
+  hidden-then-shown element restarts its CSS animation, so revisited tabs fade in too.
+- Stagger delays are inline (`riseDelay()` / `staggerDelay()` in `src/utilities/helpers/`), so they
+  always beat the `animation` shorthand.
 - Animate only `transform` and `opacity` (plus colour for hover and theme). Never animate width,
   height via layout thrash, or anything that causes layout shift.
 - No scroll-triggered animation on text. Content must be readable immediately.

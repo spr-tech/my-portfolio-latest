@@ -97,6 +97,134 @@
       transform: translateX(-50%);
     }
   }
+
+  /* Profile photo entrance. */
+  --animate-pop: pop 600ms var(--ease-entrance) backwards;
+
+  @keyframes pop {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+  }
+
+  /* Sidebar tagline: three words plus a copy of the first, so the loop restarts invisibly.
+     The steps match three words; change them if the word list in profile.ts changes length. */
+  --animate-tagline: tagline 7.5s cubic-bezier(0.7, 0, 0.2, 1) infinite;
+
+  @keyframes tagline {
+    0%,
+    28% {
+      transform: translateY(0);
+    }
+    33%,
+    61% {
+      transform: translateY(-1.6em);
+    }
+    66%,
+    94% {
+      transform: translateY(-3.2em);
+    }
+    100% {
+      transform: translateY(-4.8em);
+    }
+  }
+
+  /* Status pill: a ring that grows out of the green dot and fades. */
+  --animate-status-ping: status-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+
+  @keyframes status-ping {
+    75%,
+    100% {
+      transform: scale(2.6);
+      opacity: 0;
+    }
+  }
+
+  /* Mobile contacts dropdown opening. */
+  --animate-dropdown: dropdown 350ms ease-out backwards;
+
+  @keyframes dropdown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
+
+  /* About terminal: each line is revealed left to right in steps, like typing. */
+  --animate-type: type 800ms steps(24) backwards;
+
+  @keyframes type {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  --animate-blink: blink 1s steps(1) infinite;
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/*
+ * Entrance on first load: fade in and rise 14px, staggered with an inline animation-delay.
+ * `backwards` applies the start frame during the delay but holds nothing afterwards, so the
+ * card hover lift still works. Once the visitor has switched tabs (html[data-navigated], set by
+ * the tab bar), these stop, so a tab change only plays the quick page-enter below.
+ */
+@utility rise-on-load {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: rise 600ms var(--ease-entrance) backwards;
+
+    :where([data-navigated]) & {
+      animation: none;
+    }
+  }
+}
+
+/* Tab change: the page fades in and rises 8px. Not on first load, where rise-on-load runs. */
+@utility page-enter {
+  @media (prefers-reduced-motion: no-preference) {
+    :where([data-navigated]) & {
+      animation: page-enter 200ms var(--ease-entrance) backwards;
+    }
+  }
+}
+
+/* Theme switch: colours ease for 200ms. The toggle adds this class for a moment, so ordinary
+   hover transitions aren't affected the rest of the time. */
+@media (prefers-reduced-motion: no-preference) {
+  .theme-transition,
+  .theme-transition *,
+  .theme-transition *::before,
+  .theme-transition *::after {
+    transition:
+      background-color 200ms ease-out,
+      border-color 200ms ease-out,
+      color 200ms ease-out,
+      fill 200ms ease-out,
+      stroke 200ms ease-out !important;
+  }
 }
 
 /* Fades the tools strip in and out at both edges. The colour only sets mask opacity. */
@@ -106,15 +234,9 @@
 
 @layer base {
   /* The tab bar sticks to the top, so anchor jumps (/#enter, Skip to content) stop below it
-     instead of hiding the target underneath. The bar is taller from lg, where it has top padding. */
+     instead of hiding the target underneath. The pill bar is about 3.5rem tall at every width. */
   html {
     scroll-padding-top: 4.5rem;
-  }
-
-  @media (width >= 64rem) {
-    html {
-      scroll-padding-top: 6.5rem;
-    }
   }
 
   body {

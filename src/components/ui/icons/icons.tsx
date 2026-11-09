@@ -118,6 +118,22 @@ export function ShieldCheckIcon(props: IconProps) {
   );
 }
 
+export function PauseIcon(props: IconProps) {
+  return (
+    <BaseIcon strokeWidth={2} {...props}>
+      <path d="M9 5v14M15 5v14" />
+    </BaseIcon>
+  );
+}
+
+export function PlayIcon(props: IconProps) {
+  return (
+    <BaseIcon strokeWidth={2} {...props}>
+      <path d="M7 5v14l12-7z" />
+    </BaseIcon>
+  );
+}
+
 export function BoltIcon(props: IconProps) {
   return (
     <BaseIcon {...props}>

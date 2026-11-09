@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { CSSProperties } from "react";
 
 import { TagList } from "@/components/ui/badge/tagList";
 import { Card } from "@/components/ui/card/card";
@@ -8,12 +9,20 @@ import type { Job } from "@/models/experience";
 
 type JobCardProps = {
   job: Job;
+  /** Stagger delay for the first-load entrance. */
+  style?: CSSProperties;
 };
 
 /** One role on the work timeline: title and company, dates, highlights and the tech used. */
-export function JobCard({ job }: JobCardProps) {
+export function JobCard({ job, style }: JobCardProps) {
   return (
-    <Card as="li" padding="none" isInteractive className="relative flex flex-col gap-3 py-5 pr-5 pl-11">
+    <Card
+      as="li"
+      padding="none"
+      isInteractive
+      style={style}
+      className="rise-on-load relative flex flex-col gap-3 py-5 pr-5 pl-11"
+    >
       {/* Timeline marker, level with the first line of the title. */}
       <span
         aria-hidden="true"
