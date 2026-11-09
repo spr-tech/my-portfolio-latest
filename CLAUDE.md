@@ -16,8 +16,10 @@ The approved visual design is in `docs/design/` (see "Design reference" below).
 - Build each part yourself and run the checks (`npx tsc --noEmit`, `npm run lint`, `npm run dev`).
   Then stop and summarise what you built and why, so I can review and test before the next part.
 - Work one part at a time. Finish a part, then wait for me to ask for the next.
-- Each part gets its own branch, created from an up-to-date `main`. Don't commit or merge; I commit,
-  merge into `main` and push before asking for the next part. Tell me the branch name when done.
+- Each part gets its own branch, created from an up-to-date `main`. When a part is done, stop, tell me
+  the branch name and leave it uncommitted for review.
+- If I reply "approved", commit with a clear message, merge the branch into `main`, push, then start
+  the next part. If I reply with changes instead, make them, then stop again for review.
 - Give the full path of every file you mention, e.g. `src/components/ui/button/button.tsx`.
 - Spell out every abbreviation the first time, e.g. LCP (Largest Contentful Paint).
 - When I explain something back to you, grade it out of 10 and correct me honestly.
