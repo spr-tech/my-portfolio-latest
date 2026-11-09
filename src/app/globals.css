@@ -172,7 +172,17 @@
   }
 }
 
+/* Page content: slides up 14px but is visible from the first frame. No fade, because Chrome
+   doesn't count an element as painted while its opacity is 0, and fading the content in pushed
+   Largest Contentful Paint back by about 0.7s on every page (measured with Lighthouse). */
 @keyframes rise {
+  from {
+    transform: translateY(14px);
+  }
+}
+
+/* Sidebar and tab bar: fade in as well, since neither is ever the LCP element. */
+@keyframes rise-fade {
   from {
     opacity: 0;
     transform: translateY(14px);
@@ -187,14 +197,25 @@
 }
 
 /*
- * Entrance on first load: fade in and rise 14px, staggered with an inline animation-delay.
- * `backwards` applies the start frame during the delay but holds nothing afterwards, so the
- * card hover lift still works. Once the visitor has switched tabs (html[data-navigated], set by
- * the tab bar), these stop, so a tab change only plays the quick page-enter below.
+ * Entrance on first load, staggered with an inline animation-delay. `backwards` applies the start
+ * frame during the delay but holds nothing afterwards, so the card hover lift still works. Once
+ * the visitor has switched tabs (html[data-navigated], set by the tab bar), these stop, so a tab
+ * change only plays the quick page-enter below.
  */
 @utility rise-on-load {
   @media (prefers-reduced-motion: no-preference) {
     animation: rise 600ms var(--ease-entrance) backwards;
+
+    :where([data-navigated]) & {
+      animation: none;
+    }
+  }
+}
+
+/* The same entrance with a fade, for the sidebar and tab bar only. */
+@utility rise-fade-on-load {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: rise-fade 600ms var(--ease-entrance) backwards;
 
     :where([data-navigated]) & {
       animation: none;

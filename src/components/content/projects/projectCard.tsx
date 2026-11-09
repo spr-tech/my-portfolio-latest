@@ -13,10 +13,15 @@ type ProjectCardProps = {
   labels: ProjectsPage["labels"];
   /** Stagger delay for the first-load entrance. */
   style?: CSSProperties;
+  /**
+   * For the first card only: its screenshot is the largest thing on screen on most phones (the
+   * LCP element), so it loads straight away at high priority instead of lazily.
+   */
+  isPriority?: boolean;
 };
 
 /** A featured project: full-width screenshot, then the problem, what was built and one decision. */
-export function ProjectCard({ project, labels, style }: ProjectCardProps) {
+export function ProjectCard({ project, labels, style, isPriority = false }: ProjectCardProps) {
   const details = [
     { term: labels.problem, text: project.problem },
     { term: labels.built, text: project.built },
@@ -38,6 +43,8 @@ export function ProjectCard({ project, labels, style }: ProjectCardProps) {
           alt={project.imageAlt}
           fill
           sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
+          loading={isPriority ? "eager" : "lazy"}
+          fetchPriority={isPriority ? "high" : "auto"}
           className="object-cover object-top transition-transform duration-250 ease-out motion-safe:group-hover:scale-[1.04]"
         />
       </div>
