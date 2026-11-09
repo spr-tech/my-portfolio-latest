@@ -13,9 +13,11 @@ The approved visual design is in `docs/design/` (see "Design reference" below).
 
 ## How to work with me
 
-- I write the code. By default, explain the decision, the file it goes in and why, and let me write
-  it. Only write the code yourself when I explicitly ask you to.
+- Build each part yourself and run the checks (`npx tsc --noEmit`, `npm run lint`, `npm run dev`).
+  Then stop and summarise what you built and why, so I can review and test before the next part.
 - Work one part at a time. Finish a part, then wait for me to ask for the next.
+- Each part gets its own branch, created from an up-to-date `main`. Don't commit or merge; I commit,
+  merge into `main` and push before asking for the next part. Tell me the branch name when done.
 - Give the full path of every file you mention, e.g. `src/components/ui/button/button.tsx`.
 - Spell out every abbreviation the first time, e.g. LCP (Largest Contentful Paint).
 - When I explain something back to you, grade it out of 10 and correct me honestly.
@@ -74,8 +76,8 @@ src/
 │
 ├── assets/
 │   └── images/
-│       ├── profile/muizz.jpg     # Imported, so next/image knows its size
-│       └── projects/             # flowboard.webp, enter.webp, foodbridge.webp, ekowatch.webp
+│       ├── profile/muizz.png     # Imported, so next/image knows its size
+│       └── projects/             # flowboard.png, enter.webp, foodbridge.webp, ekowatch.webp
 │
 ├── components/
 │   ├── ui/                       # Generic. Knows nothing about projects or jobs.
@@ -130,7 +132,8 @@ Rules:
 - `ui/` never imports from `content/` or `data/`. Pass things in as props.
 - Route files only render a content component and export `metadata`.
 - Images used on the page are imported from `src/assets/images/` (static imports), never referenced
-  by string path, so `next/image` gets width and height at build time. Screenshots are 16:10 WebP.
+  by string path, so `next/image` gets width and height at build time. Images can be PNG or WebP:
+  `next/image` converts them to a modern format for the browser automatically. Screenshots are 16:10.
 - Copy lives in `src/data/`, never hard-coded in components. Changing a project description should
   mean editing one data file.
 - Server Components by default. `"use client"` only where needed: `themeToggle.tsx`, `tabNav.tsx`,
@@ -142,7 +145,7 @@ Rules:
 ## Naming
 
 From the guide: files camelCase (`projectCard.tsx`), components PascalCase (`ProjectCard`), folders
-lowercase, booleans `is`/`has`/`can`, handlers `handleX` defined and `onX` as props. Exception: Next.js
+lowercase, camelCase when multi-word (`themeToggle/`), booleans `is`/`has`/`can`, handlers `handleX` defined and `onX` as props. Exception: Next.js
 reserved files (`page.tsx`, `layout.tsx`, `not-found.tsx`) keep their required names.
 
 ---
@@ -313,7 +316,7 @@ These apply to every piece of copy in `src/data/`.
   unfinished).
 - Experience and About copy comes from the CV and the design files in `docs/design/`. Three roles:
   TeSA Africa (Software Engineering Fellow), RWA Inc and STX Technology (Frontend Developer Intern).
-- Say "Open to frontend engineering roles". Do not narrow it to one industry on the site.
+- Don't narrow the role to one industry anywhere on the site.
 - Each project card: screenshot, title, three short lines (the problem, what was built, one decision
   and why), tech used, live link, GitHub link where public.
 - FoodBridge and EkoWatch are team projects. Say so, and state my role: interface engineer working
@@ -346,7 +349,8 @@ The current site's link preview is blank. Fixing that is a priority.
 Target: Lighthouse 95+ on mobile for Performance, Accessibility, Best Practices and SEO (Search
 Engine Optimisation). This site is evidence that I care about performance, so it has to score well.
 
-- Every image through `next/image` with correct `sizes`. Screenshots in WebP or AVIF.
+- Every image through `next/image` with correct `sizes`. Source images in PNG or WebP;
+  `next/image` serves an optimised format.
 - Mark the sidebar photo `priority` since it is likely the LCP (Largest Contentful Paint) element.
 - No layout shift: fixed image dimensions, fonts through `next/font`.
 - Keep client JavaScript small. Do not make a whole page a client component for one interactive bit.
