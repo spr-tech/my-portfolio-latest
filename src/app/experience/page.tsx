@@ -1,3 +1,5 @@
+import { ExperienceContent } from "@/components/content/experience/experienceContent";
+
 export default function Page() {
-  return null;
+  return <ExperienceContent />;
 }

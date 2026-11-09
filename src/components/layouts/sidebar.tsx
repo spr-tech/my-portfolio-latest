@@ -53,7 +53,8 @@ export function Sidebar({ className }: SidebarProps) {
           className="size-19 shrink-0 rounded-xl border border-border bg-surface-raised object-cover object-top lg:size-32 lg:rounded-2xl"
         />
         <div className="min-w-0 flex-1 lg:flex-none">
-          <Text size="heading" weight="bold" tone="primary" className="lg:text-2xl">
+          {/* 16px below 360px wide, so the name stays on one line beside the 76px photo. */}
+          <Text size="heading" weight="bold" tone="primary" className="max-[22.5rem]:text-base lg:text-2xl">
             {profile.name}
           </Text>
           {/* 12px on phones as in the design, 14px from lg. Allowed to wrap so it never slides
