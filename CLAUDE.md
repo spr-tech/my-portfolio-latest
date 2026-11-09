@@ -88,6 +88,7 @@ src/
 │   │   ├── card/card.tsx
 │   │   ├── typography/text.tsx
 │   │   ├── link/externalLink.tsx
+│   │   ├── icons/icons.tsx       # Inline SVG icons from the design, all aria-hidden
 │   │   └── themeToggle/themeToggle.tsx
 │   │
 │   ├── layouts/
