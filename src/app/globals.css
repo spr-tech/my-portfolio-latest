@@ -84,10 +84,24 @@
   --color-terminal-dot-yellow: var(--terminal-dot-yellow);
   --color-terminal-dot-green: var(--terminal-dot-green);
 
-  --font-sans: var(--font-jakarta-sans);
+  --font-sans: var(--font-poppins);
   --font-mono: var(--font-plex-mono);
 
   --ease-entrance: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* Tools strip: the track holds two copies of the list, so sliding it by half loops seamlessly. */
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* Fades the tools strip in and out at both edges. The colour only sets mask opacity. */
+@utility mask-fade-x {
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
 }
 
 @layer base {

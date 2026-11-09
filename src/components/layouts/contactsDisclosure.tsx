@@ -25,13 +25,15 @@ export function ContactsDisclosure({ showLabel, hideLabel, cvButton, children }:
 
   return (
     <>
-      <div className="flex gap-2 lg:hidden">
+      {/* flex-auto, not flex-1: on very narrow phones the buttons wrap to two rows instead of
+          pushing the page wider than the screen. */}
+      <div className="flex flex-wrap gap-2 lg:hidden">
         <Button
           variant="secondary"
           aria-expanded={isOpen}
           aria-controls={listId}
           onClick={() => setIsOpen((wasOpen) => !wasOpen)}
-          className="flex-1 gap-1.5"
+          className="flex-auto gap-1.5"
           endIcon={
             <ChevronDownIcon
               className={cn("size-4 transition-transform duration-350 ease-out", isOpen && "rotate-180")}

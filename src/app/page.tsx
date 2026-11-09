@@ -1,3 +1,5 @@
+import { ProjectsContent } from "@/components/content/projects/projectsContent";
+
 export default function Page() {
-  return null;
+  return <ProjectsContent />;
 }

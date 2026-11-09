@@ -22,7 +22,7 @@ function CvButton({ className }: { className?: string }) {
       href={profile.cv.href}
       download={profile.cv.fileName}
       startIcon={<DownloadIcon className="size-4" />}
-      className={cn("flex-1", className)}
+      className={cn("flex-auto", className)}
     >
       {profile.cv.label}
     </Button>
@@ -47,16 +47,21 @@ export function Sidebar({ className }: SidebarProps) {
         <Image
           src={profile.photo}
           alt={profile.photoAlt}
-          sizes="(min-width: 1024px) 128px, 64px"
+          sizes="(min-width: 1024px) 128px, 76px"
           quality={90}
           preload
-          className="size-16 shrink-0 rounded-xl border border-border bg-surface-raised object-cover object-top lg:size-32 lg:rounded-2xl"
+          className="size-19 shrink-0 rounded-xl border border-border bg-surface-raised object-cover object-top lg:size-32 lg:rounded-2xl"
         />
         <div className="min-w-0 flex-1 lg:flex-none">
           <Text size="heading" weight="bold" tone="primary" className="lg:text-2xl">
             {profile.name}
           </Text>
-          <Badge variant="accent" size="md" className="mt-1 lg:mt-2">
+          {/* 12px on phones as in the design, 14px from lg. Allowed to wrap so it never slides
+              under the theme toggle on very narrow screens. */}
+          <Badge
+            variant="accent"
+            className="mt-1 whitespace-normal lg:mt-2 lg:rounded-lg lg:px-2.5 lg:py-1 lg:text-sm"
+          >
             {profile.role}
           </Badge>
         </div>

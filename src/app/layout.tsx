@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { IBM_Plex_Mono, Poppins } from "next/font/google";
 
 import { AppShell } from "@/components/layouts/appShell";
 import { ThemeProvider } from "@/components/providers/themeProvider";
@@ -8,10 +8,11 @@ import { siteUrl } from "@/utilities/constants/site";
 
 import "./globals.css";
 
-const jakartaSans = Plus_Jakarta_Sans({
+// Poppins isn't a variable font: each weight is its own file, so keep this list to what's used.
+const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-jakarta-sans",
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -51,7 +52,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${jakartaSans.variable} ${plexMono.variable}`}
+      className={`${poppins.variable} ${plexMono.variable}`}
       suppressHydrationWarning
     >
       <body className="font-sans">
