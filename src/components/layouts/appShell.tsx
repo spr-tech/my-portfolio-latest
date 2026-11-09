@@ -25,7 +25,7 @@ export function AppShell({ children }: AppShellProps) {
 
         <div className="flex min-w-0 flex-1 flex-col gap-6 lg:gap-8 sticky">
           <TabNav />
-          <main id="main" tabIndex={-1} className="flex flex-col gap-12 focus:outline-none">
+          <main id="main" tabIndex={-1} className="focus:outline-none">
             {children}
           </main>
           <footer className="border-t border-border pt-4">

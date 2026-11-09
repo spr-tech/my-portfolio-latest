@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 
 import { Badge } from "@/components/ui/badge/badge";
 import { TagList } from "@/components/ui/badge/tagList";
@@ -10,16 +11,19 @@ import type { ProjectsPage, TeamProject } from "@/models/project";
 type TeamProjectCardProps = {
   project: TeamProject;
   labels: ProjectsPage["labels"];
+  /** Stagger delay for the first-load entrance. */
+  style?: CSSProperties;
 };
 
 /** A smaller card for team work, stating the team and my role up front. */
-export function TeamProjectCard({ project, labels }: TeamProjectCardProps) {
+export function TeamProjectCard({ project, labels, style }: TeamProjectCardProps) {
   return (
     <Card
       as="article"
       id={project.slug}
       isInteractive
-      className="flex flex-col gap-3 p-4 sm:p-5"
+      style={style}
+      className="rise-on-load flex flex-col gap-3 p-4 sm:p-5"
     >
       <div className="relative aspect-video overflow-hidden rounded-lg border border-border bg-surface-raised">
         <Image

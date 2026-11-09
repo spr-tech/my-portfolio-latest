@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card/card";
 import { Text } from "@/components/ui/typography/text";
 import { education, experiencePage, jobs } from "@/data/experience";
 import { skillGroups } from "@/data/skills";
+import { riseDelay, staggerDelay } from "@/utilities/helpers/riseDelay";
 
 export function ExperienceContent() {
   return (
@@ -12,17 +13,21 @@ export function ExperienceContent() {
       <PageHeader intro={experiencePage} />
 
       <section aria-labelledby="work-heading" className="flex flex-col gap-4">
-        <Text as="h2" size="heading" id="work-heading">
+        <Text as="h2" size="heading" id="work-heading" className="rise-on-load" style={riseDelay(260)}>
           {experiencePage.workTitle}
         </Text>
         <ol className="flex flex-col gap-4">
-          {jobs.map((job) => (
-            <JobCard key={`${job.company}-${job.role}`} job={job} />
+          {jobs.map((job, index) => (
+            <JobCard key={`${job.company}-${job.role}`} job={job} style={staggerDelay(320, index)} />
           ))}
         </ol>
       </section>
 
-      <section aria-labelledby="skills-heading" className="flex flex-col gap-4">
+      <section
+        aria-labelledby="skills-heading"
+        className="rise-on-load flex flex-col gap-4"
+        style={riseDelay(700)}
+      >
         <Text as="h2" size="heading" id="skills-heading">
           {experiencePage.skillsTitle}
         </Text>
@@ -38,7 +43,11 @@ export function ExperienceContent() {
         </div>
       </section>
 
-      <section aria-labelledby="education-heading" className="flex flex-col gap-4">
+      <section
+        aria-labelledby="education-heading"
+        className="rise-on-load flex flex-col gap-4"
+        style={riseDelay(820)}
+      >
         <Text as="h2" size="heading" id="education-heading">
           {experiencePage.educationTitle}
         </Text>

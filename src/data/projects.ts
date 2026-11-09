@@ -10,6 +10,7 @@ export const projectsPage: ProjectsPage = {
   featuredTitle: "Featured",
   teamTitle: "Team projects",
   toolsLabel: "Tools I build with",
+  toolsPauseLabel: "Pause scrolling tools",
   labels: {
     problem: "Problem",
     built: "Built",

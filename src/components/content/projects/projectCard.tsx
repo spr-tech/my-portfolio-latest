@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 
 import { Badge } from "@/components/ui/badge/badge";
 import { TagList } from "@/components/ui/badge/tagList";
@@ -10,10 +11,12 @@ import type { FeaturedProject, ProjectsPage } from "@/models/project";
 type ProjectCardProps = {
   project: FeaturedProject;
   labels: ProjectsPage["labels"];
+  /** Stagger delay for the first-load entrance. */
+  style?: CSSProperties;
 };
 
 /** A featured project: full-width screenshot, then the problem, what was built and one decision. */
-export function ProjectCard({ project, labels }: ProjectCardProps) {
+export function ProjectCard({ project, labels, style }: ProjectCardProps) {
   const details = [
     { term: labels.problem, text: project.problem },
     { term: labels.built, text: project.built },
@@ -26,7 +29,8 @@ export function ProjectCard({ project, labels }: ProjectCardProps) {
       id={project.slug}
       padding="none"
       isInteractive
-      className="flex flex-col overflow-hidden"
+      style={style}
+      className="rise-on-load flex flex-col overflow-hidden"
     >
       <div className="relative aspect-16/10 overflow-hidden border-b border-border bg-surface-raised">
         <Image

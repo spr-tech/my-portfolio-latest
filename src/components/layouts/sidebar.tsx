@@ -39,7 +39,10 @@ export function Sidebar({ className }: SidebarProps) {
       as="aside"
       aria-label="Profile"
       padding="none"
-      className={cn("flex flex-col gap-3.5 p-4 lg:sticky lg:top-6 lg:gap-5 lg:px-6 lg:py-7", className)}
+      className={cn(
+        "rise-on-load flex flex-col gap-3.5 p-4 lg:sticky lg:top-6 lg:gap-5 lg:px-6 lg:py-7",
+        className,
+      )}
     >
       <div className="flex items-center gap-3 lg:flex-col lg:text-center">
         {/* sizes is the real display width; the browser multiplies it by the screen's pixel
@@ -50,7 +53,7 @@ export function Sidebar({ className }: SidebarProps) {
           sizes="(min-width: 1024px) 128px, 76px"
           quality={90}
           preload
-          className="size-19 shrink-0 rounded-xl border border-border bg-surface-raised object-cover object-top lg:size-32 lg:rounded-2xl"
+          className="size-19 shrink-0 rounded-xl border border-border bg-surface-raised object-cover object-top motion-safe:animate-pop lg:size-32 lg:rounded-2xl"
         />
         <div className="min-w-0 flex-1 lg:flex-none">
           {/* 16px below 360px wide, so the name stays on one line beside the 76px photo. */}
@@ -69,16 +72,34 @@ export function Sidebar({ className }: SidebarProps) {
         <ThemeToggle className="lg:hidden" />
       </div>
 
-      <p className="text-sm text-text-secondary lg:text-center">
+      <p className="text-sm leading-[1.6] text-text-secondary lg:text-center">
         <span aria-hidden="true">
           {profile.tagline.lead}{" "}
-          <span className="font-medium text-accent-text">{profile.tagline.words[0]}</span>.
+          {/* A one-line window over a stack of the words; the stack slides up one line at a time.
+              The first word is repeated at the end so the loop restarts without a jump. The window
+              is as wide as the longest word, so each word is left-aligned and carries its own full
+              stop, keeping "fast." together instead of leaving a gap before the dot. With reduced
+              motion only the first word shows. */}
+          <span className="inline-block h-[1.6em] overflow-hidden text-left align-bottom">
+            <span className="block motion-safe:animate-tagline">
+              {[...profile.tagline.words, profile.tagline.words[0]].map((word, index) => (
+                <span
+                  key={`${word}-${index}`}
+                  className={cn("block h-[1.6em]", index > 0 && "motion-reduce:hidden")}
+                >
+                  <span className="font-medium text-accent-text">{word}</span>.
+                </span>
+              ))}
+            </span>
+          </span>
         </span>
         <span className="sr-only">{profile.tagline.accessibleText}</span>
       </p>
 
       <Badge variant="outline" className="self-start rounded-full px-2.5 py-1 font-medium lg:self-center">
-        <span aria-hidden="true" className="relative size-2 rounded-full bg-success" />
+        <span aria-hidden="true" className="relative size-2 rounded-full bg-success">
+          <span className="absolute inset-0 rounded-full bg-success motion-safe:animate-status-ping" />
+        </span>
         {profile.status}
       </Badge>
 
