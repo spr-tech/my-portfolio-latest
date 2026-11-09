@@ -105,6 +105,18 @@
 }
 
 @layer base {
+  /* The tab bar sticks to the top, so anchor jumps (/#enter, Skip to content) stop below it
+     instead of hiding the target underneath. The bar is taller from lg, where it has top padding. */
+  html {
+    scroll-padding-top: 4.5rem;
+  }
+
+  @media (width >= 64rem) {
+    html {
+      scroll-padding-top: 6.5rem;
+    }
+  }
+
   body {
     min-height: 100dvh;
     background-color: var(--bg);

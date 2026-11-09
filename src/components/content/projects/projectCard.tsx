@@ -26,7 +26,7 @@ export function ProjectCard({ project, labels }: ProjectCardProps) {
       id={project.slug}
       padding="none"
       isInteractive
-      className="flex scroll-mt-6 flex-col overflow-hidden"
+      className="flex flex-col overflow-hidden"
     >
       <div className="relative aspect-16/10 overflow-hidden border-b border-border bg-surface-raised">
         <Image

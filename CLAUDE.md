@@ -118,7 +118,9 @@ src/
 │       ├── experience/
 │       │   ├── experienceContent.tsx
 │       │   └── jobCard.tsx           # One role on the work timeline
-│       ├── about/aboutContent.tsx
+│       ├── about/
+│       │   ├── aboutContent.tsx
+│       │   └── terminalCard.tsx      # Always-dark terminal window
 │       └── contact/contactContent.tsx
 │
 ├── data/                         # All site copy, typed

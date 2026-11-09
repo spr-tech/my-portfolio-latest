@@ -1,3 +1,5 @@
+import { AboutContent } from "@/components/content/about/aboutContent";
+
 export default function Page() {
-  return null;
+  return <AboutContent />;
 }
