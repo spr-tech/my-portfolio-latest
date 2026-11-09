@@ -38,6 +38,11 @@ export type Profile = {
     accessibleText: string;
   };
   status: string;
+  /** Used by "Get in touch" to open an email with the subject filled in. */
+  email: {
+    address: string;
+    subject: string;
+  };
   contacts: ContactItem[];
   socialLinks: SocialLink[];
   contactsToggle: {

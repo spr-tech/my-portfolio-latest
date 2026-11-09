@@ -50,7 +50,9 @@ preview, and the browser's back button works.
 | `/`           | `src/app/page.tsx`               | Projects (default tab)                   |
 | `/experience` | `src/app/experience/page.tsx`    | Work experience and skills               |
 | `/about`      | `src/app/about/page.tsx`         | Short bio                                |
-| `/contact`    | `src/app/contact/page.tsx`       | Email, GitHub, LinkedIn, CV download     |
+
+There is no Contact tab: the sidebar already shows email, location, GitHub, LinkedIn and the CV, and
+"Get in touch" on About opens an email. See "Later" for the planned contact form.
 
 The sidebar card and the tab bar live in `src/app/layout.tsx` through the app shell, so they stay on
 screen while only the tab content changes.
@@ -77,7 +79,6 @@ src/
 │   ├── page.tsx                  # Projects tab
 │   ├── experience/page.tsx
 │   ├── about/page.tsx
-│   ├── contact/page.tsx
 │   ├── opengraph-image.png       # 1200×630 link preview, picked up automatically
 │   └── not-found.tsx
 │
@@ -101,7 +102,7 @@ src/
 │   │   ├── appShell.tsx          # Sidebar + tab bar + content area
 │   │   ├── sidebar.tsx
 │   │   ├── contactsDisclosure.tsx # Mobile "Show contacts" toggle (client)
-│   │   ├── contactList.tsx       # Email and location rows; sidebar and Contact tab
+│   │   ├── contactList.tsx       # Email and location rows in the sidebar
 │   │   ├── socialLinks.tsx       # GitHub and LinkedIn icon row
 │   │   ├── pageHeader.tsx        # h1 + intro at the top of every tab
 │   │   └── tabNav.tsx            # Active tab via usePathname()
@@ -118,30 +119,29 @@ src/
 │       ├── experience/
 │       │   ├── experienceContent.tsx
 │       │   └── jobCard.tsx           # One role on the work timeline
-│       ├── about/
-│       │   ├── aboutContent.tsx
-│       │   └── terminalCard.tsx      # Always-dark terminal window
-│       └── contact/contactContent.tsx
+│       └── about/
+│           ├── aboutContent.tsx
+│           └── terminalCard.tsx      # Always-dark terminal window
 │
 ├── data/                         # All site copy, typed
-│   ├── profile.ts                # Name, photo, tagline, contacts, CV
+│   ├── profile.ts                # Name, photo, tagline, email, contacts, CV
 │   ├── projects.ts               # Projects tab intro, featured and team projects
 │   ├── experience.ts             # Experience tab intro, jobs, education
 │   ├── skills.ts                 # Skill groups and the tools strip
-│   ├── about.ts                  # About tab copy, terminal lines, principles
-│   └── contact.ts                # Contact tab copy (no design; new copy)
+│   └── about.ts                  # About tab copy, terminal lines, principles
 │
 ├── models/                       # Types for the data files
 │   ├── page.ts                   # PageIntro: title + intro shared by every tab
 │   ├── profile.ts
 │   ├── project.ts
 │   ├── experience.ts             # Job, SkillGroup, Education
-│   ├── about.ts
-│   └── contact.ts
+│   └── about.ts
 │
 └── utilities/
     ├── helpers/cn.ts
-    └── constants/navigation.ts   # Tab list: label + href
+    ├── helpers/mailto.ts         # mailto: link with an encoded subject
+    ├── constants/navigation.ts   # Tab list: label + href
+    └── constants/site.ts         # Public site URL for metadata
 ```
 
 Outside `src/`:
@@ -405,6 +405,14 @@ The guide is written for a data-heavy app. This site has no backend, so:
 - **No table, modal or toast components** until a screen actually needs one. Third use, then extract.
 - If a contact form is added later, follow the guide's form rules (section 7): schema in its own
   file, field components bound to the form object, messages that name the field and the fix.
+
+---
+
+## Later
+
+- **Contact tab removed for now.** A contact form (Resend + Server Action + Zod, no file upload or
+  reCAPTCHA) may be added later. The removed tab, its data and its type can be restored from git
+  history (branch `chore/remove-contact-tab`).
 
 ---
 

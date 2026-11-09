@@ -47,6 +47,5 @@ export const aboutPage: AboutPage = {
       "Open to frontend engineering roles",
     ],
     contactLabel: "Get in touch",
-    contactHref: "/contact",
   },
 };
