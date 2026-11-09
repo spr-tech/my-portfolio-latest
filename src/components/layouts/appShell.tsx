@@ -23,7 +23,7 @@ export function AppShell({ children }: AppShellProps) {
       <div className="mx-auto flex max-w-300 flex-col gap-4 px-4 py-4 lg:flex-row lg:items-start lg:gap-8 lg:px-8 lg:py-12">
         <Sidebar className="lg:w-80 lg:shrink-0" />
 
-        <div className="flex min-w-0 flex-1 flex-col gap-6 lg:gap-8 sticky">
+        <div className="flex min-w-0 flex-1 flex-col gap-6 lg:gap-8">
           <TabNav />
           <main id="main" tabIndex={-1} className="focus:outline-none">
             {children}

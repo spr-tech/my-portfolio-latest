@@ -40,19 +40,21 @@ export function Sidebar({ className }: SidebarProps) {
       aria-label="Profile"
       padding="none"
       className={cn(
-        "rise-on-load flex flex-col gap-3.5 p-4 lg:sticky lg:top-6 lg:gap-5 lg:px-6 lg:py-7",
+        "rise-fade-on-load flex flex-col gap-3.5 p-4 lg:sticky lg:top-6 lg:gap-5 lg:px-6 lg:py-7",
         className,
       )}
     >
       <div className="flex items-center gap-3 lg:flex-col lg:text-center">
         {/* sizes is the real display width; the browser multiplies it by the screen's pixel
-            density, so a 2x screen fetches the 256px file for the 128px photo. */}
+            density, so a 2x screen fetches the 256px file for the 128px photo.
+            eager, not preload: it's above the fold so it shouldn't wait, but Lighthouse showed it
+            is never the LCP element, so it mustn't compete with the one that is. */}
         <Image
           src={profile.photo}
           alt={profile.photoAlt}
           sizes="(min-width: 1024px) 128px, 76px"
           quality={90}
-          preload
+          loading="eager"
           className="size-19 shrink-0 rounded-xl border border-border bg-surface-raised object-cover object-top motion-safe:animate-pop lg:size-32 lg:rounded-2xl"
         />
         <div className="min-w-0 flex-1 lg:flex-none">

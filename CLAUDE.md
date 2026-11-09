@@ -32,7 +32,8 @@ The approved visual design is in `docs/design/` (see "Design reference" below).
 - Next.js with the App Router, TypeScript, strict mode
 - Tailwind CSS v4 (configured in `src/app/globals.css`, no `tailwind.config` file)
 - `next-themes` for light and dark mode
-- `motion` (formerly Framer Motion) for the few animations listed below, imported from `motion/react`
+- Animation is plain CSS (keyframes in `src/app/globals.css`). No animation library; `motion` was
+  removed because nothing used it.
 - `next/font` for Poppins (and IBM Plex Mono for the terminal), `next/image` for every image
 - `clsx` + `tailwind-merge` behind a `cn()` helper
 
@@ -171,8 +172,8 @@ Rules:
 - Copy lives in `src/data/`, never hard-coded in components. Changing a project description should
   mean editing one data file.
 - Server Components by default. `"use client"` only where needed: `themeToggle.tsx`, `tabNav.tsx`,
-  `themeProvider.tsx`, the mobile contacts toggle, and small animation wrappers. Keep client
-  components small and at the leaves.
+  `themeProvider.tsx`, `contactsDisclosure.tsx` (mobile contacts toggle) and `toolsStrip.tsx`
+  (marquee pause button). Keep client components small and at the leaves.
 
 ---
 
@@ -290,7 +291,7 @@ A little motion, never decorative noise. Every animation must have a reason.
 
 | Where              | What                                                         | Duration          |
 | ------------------ | ------------------------------------------------------------ | ----------------- |
-| Page load          | Sidebar, tabs, heading, then cards fade in and rise 14px, staggered ~110ms apart (first load only) | ~600ms each |
+| Page load          | First load only, staggered ~110ms apart: sidebar and tab bar fade in and rise 14px; the heading and cards slide up 14px without fading (see rules) | ~600ms each |
 | Profile photo      | Pops in from 90% scale (rounded square, no ring)             | ~600ms            |
 | Tab bar            | Floating pill; the active tab gets an `--accent-subtle` background that fades in | ~200ms |
 | Tab content        | Fades and rises 8px on every tab change (not on first load)  | ~200ms            |
@@ -316,11 +317,15 @@ Rules:
   hidden text instead. The marquee's duplicated copy is also `aria-hidden`.
 - Respect `prefers-reduced-motion`: every animation is behind `motion-safe:` or a
   `prefers-reduced-motion: no-preference` media query. With reduced motion, things appear instantly.
-- All animation is CSS (keyframes in `src/app/globals.css`); no animation JavaScript ships. If a
-  future animation needs `motion`, use `useReducedMotion()` from `motion/react`.
-- How first load and tab changes differ: elements with the `rise-on-load` class run the staggered
-  entrance; `src/app/template.tsx` wraps each tab in `page-enter`. The tab bar sets
-  `<html data-navigated>` on the first tab change, which turns `rise-on-load` off and `page-enter`
+- All animation is CSS (keyframes in `src/app/globals.css`); no animation JavaScript ships. Ask
+  before adding an animation library.
+- Page content never starts at opacity 0 on first load. Chrome doesn't count an element as painted
+  while it's invisible, so fading content in delayed LCP (Largest Contentful Paint) by about 0.7s
+  on every page in Lighthouse. Content uses `rise-on-load` (slide only); only the sidebar and tab
+  bar, which are never the LCP element, use `rise-fade-on-load`.
+- How first load and tab changes differ: elements with `rise-on-load` or `rise-fade-on-load` run
+  the staggered entrance; `src/app/template.tsx` wraps each tab in `page-enter`. The tab bar sets
+  `<html data-navigated>` on the first tab change, which turns the entrance off and `page-enter`
   on. Next keeps visited tabs mounted but hidden (`cacheComponents` uses `<Activity>`), and a
   hidden-then-shown element restarts its CSS animation, so revisited tabs fade in too.
 - Stagger delays are inline (`riseDelay()` / `staggerDelay()` in `src/utilities/helpers/`), so they
@@ -410,7 +415,15 @@ Engine Optimisation). This site is evidence that I care about performance, so it
 
 - Every image through `next/image` with correct `sizes`. Source images in PNG or WebP;
   `next/image` serves an optimised format.
-- Mark the sidebar photo `preload` (Next 16 deprecated `priority`) since it is likely the LCP (Largest Contentful Paint) element.
+- The LCP (Largest Contentful Paint) element, measured with mobile Lighthouse: the first featured
+  screenshot (Flowboard) on Projects, the first job card on Experience, the first bio paragraph on
+  About. The first featured screenshot loads with `loading="eager"` and `fetchPriority="high"`;
+  every other screenshot stays lazy.
+- The sidebar photo is never the LCP element, so it uses `loading="eager"` (it's above the fold)
+  rather than `preload`. React 19 still adds a preload hint for every non-lazy image during server
+  rendering, so the photo is fetched early either way; the difference is that it no longer asks for
+  high priority, leaving that to the real LCP image. Next 16 deprecated `priority`; use `preload`
+  only for an image that is the LCP element on every screen.
 - No layout shift: fixed image dimensions, fonts through `next/font`.
 - Keep client JavaScript small. Do not make a whole page a client component for one interactive bit.
 - Tabs: `aria-current="page"` on the active link. Visible focus ring using `--accent`.

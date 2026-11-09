@@ -35,6 +35,7 @@ export function ProjectsContent() {
               project={project}
               labels={projectsPage.labels}
               style={staggerDelay(370, index)}
+              isPriority={index === 0}
             />
           ))}
         </div>

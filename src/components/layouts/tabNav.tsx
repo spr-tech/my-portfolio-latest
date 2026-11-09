@@ -10,7 +10,7 @@ import { riseDelay } from "@/utilities/helpers/riseDelay";
 
 /**
  * Marks <html data-navigated> on the first tab change. From then on the staggered first-load
- * entrance (rise-on-load) is off and tab changes only play the quick page-enter fade. A layout
+ * entrance (rise-on-load, rise-fade-on-load) is off and tab changes only play the quick page-enter fade. A layout
  * effect runs before the new tab is painted, so its first-load animation never flashes.
  */
 function useMarkNavigation(pathname: string) {
@@ -32,7 +32,7 @@ export function TabNav() {
     <nav
       aria-label="Sections"
       style={riseDelay(80)}
-      className="rise-on-load sticky top-0 z-10 flex lg:justify-end"
+      className="rise-fade-on-load sticky top-0 z-10 flex lg:justify-end"
     >
       <ul className="flex w-full justify-center gap-1 rounded-b-2xl border border-t-0 border-border bg-surface/90 px-2 py-1 backdrop-blur-md lg:w-auto lg:px-3">
         {navigationTabs.map((tab) => {
