@@ -33,7 +33,7 @@ The approved visual design is in `docs/design/` (see "Design reference" below).
 - Tailwind CSS v4 (configured in `src/app/globals.css`, no `tailwind.config` file)
 - `next-themes` for light and dark mode
 - `motion` (formerly Framer Motion) for the few animations listed below, imported from `motion/react`
-- `next/font` for Plus Jakarta Sans (and IBM Plex Mono for the terminal), `next/image` for every image
+- `next/font` for Poppins (and IBM Plex Mono for the terminal), `next/image` for every image
 - `clsx` + `tailwind-merge` behind a `cn()` helper
 
 Do not add a library without asking first. This site has no backend, no auth and no data fetching.
@@ -61,7 +61,7 @@ theme toggle, then "Show contacts" and "Download CV" side by side. Contacts open
 mobile. The sidebar must never be sticky below the `lg` breakpoint.
 
 Profile photo: a rounded square, not a circle, with no accent ring. 128px with `rounded-2xl` on
-desktop, 64px with `rounded-xl` on mobile, `object-top` so the face isn't cropped, quality 90.
+desktop, 76px with `rounded-xl` on mobile, `object-top` so the face isn't cropped, quality 90.
 Contacts: Email and Location are full rows with uppercase captions; GitHub and LinkedIn are a centred
 row of icon links (20px icons, 44px tap targets) underneath. On mobile both sit inside the dropdown.
 
@@ -90,6 +90,7 @@ src/
 │   ├── ui/                       # Generic. Knows nothing about projects or jobs.
 │   │   ├── button/button.tsx
 │   │   ├── badge/badge.tsx
+│   │   ├── badge/tagList.tsx     # Wrapping list of outline badges (tech tags)
 │   │   ├── card/card.tsx
 │   │   ├── typography/text.tsx
 │   │   ├── link/externalLink.tsx
@@ -100,7 +101,9 @@ src/
 │   │   ├── appShell.tsx          # Sidebar + tab bar + content area
 │   │   ├── sidebar.tsx
 │   │   ├── contactsDisclosure.tsx # Mobile "Show contacts" toggle (client)
-│   │   ├── contactList.tsx       # Contacts with icons; sidebar and Contact tab
+│   │   ├── contactList.tsx       # Email and location rows; sidebar and Contact tab
+│   │   ├── socialLinks.tsx       # GitHub and LinkedIn icon row
+│   │   ├── pageHeader.tsx        # h1 + intro at the top of every tab
 │   │   └── tabNav.tsx            # Active tab via usePathname()
 │   │
 │   ├── providers/
@@ -109,7 +112,9 @@ src/
 │   └── content/                  # One folder per tab
 │       ├── projects/
 │       │   ├── projectsContent.tsx
-│       │   └── projectCard.tsx
+│       │   ├── projectCard.tsx       # Featured card
+│       │   ├── teamProjectCard.tsx   # Smaller team card
+│       │   └── toolsStrip.tsx        # Marquee of tools
 │       ├── experience/experienceContent.tsx
 │       ├── about/aboutContent.tsx
 │       └── contact/contactContent.tsx
@@ -227,7 +232,7 @@ tokens below.
   --color-accent-subtle: var(--accent-subtle);
   --color-accent-foreground: var(--accent-foreground);
   --color-danger: var(--danger);
-  --font-sans: var(--font-jakarta-sans);
+  --font-sans: var(--font-poppins);
   --font-mono: var(--font-plex-mono);
 }
 ```
@@ -250,8 +255,9 @@ Theme setup notes:
 
 ### Typography
 
-- One font: Plus Jakarta Sans via `next/font/google`, weights 400, 500, 600 and 700, exposed as
-  `--font-jakarta-sans`. The only exception is IBM Plex Mono (400, 500) for the About terminal card,
+- One font: Poppins via `next/font/google`, weights 400, 500, 600 and 700 only (not a variable
+  font, so each weight is a separate file; add none without a reason), exposed as
+  `--font-poppins`. The only exception is IBM Plex Mono (400, 500) for the About terminal card,
   loaded with `preload: false` since only one tab uses it.
 - Headings use 600 or 700. The name in the sidebar is 700.
 - Hierarchy comes from size and weight only. Use the `Text` component so sizes stay consistent.
