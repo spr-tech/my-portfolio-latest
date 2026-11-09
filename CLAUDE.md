@@ -108,14 +108,20 @@ src/
 │       └── contact/contactContent.tsx
 │
 ├── data/                         # All site copy, typed
-│   ├── profile.ts
-│   ├── projects.ts
-│   ├── experience.ts
-│   └── skills.ts
+│   ├── profile.ts                # Name, photo, tagline, contacts, CV
+│   ├── projects.ts               # Projects tab intro, featured and team projects
+│   ├── experience.ts             # Experience tab intro, jobs, education
+│   ├── skills.ts                 # Skill groups and the tools strip
+│   ├── about.ts                  # About tab copy, terminal lines, principles
+│   └── contact.ts                # Contact tab copy (no design; new copy)
 │
 ├── models/                       # Types for the data files
+│   ├── page.ts                   # PageIntro: title + intro shared by every tab
+│   ├── profile.ts
 │   ├── project.ts
-│   └── experience.ts
+│   ├── experience.ts             # Job, SkillGroup, Education
+│   ├── about.ts
+│   └── contact.ts
 │
 └── utilities/
     ├── helpers/cn.ts
