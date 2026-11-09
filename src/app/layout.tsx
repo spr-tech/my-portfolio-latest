@@ -5,6 +5,7 @@ import { AppShell } from "@/components/layouts/appShell";
 import { ThemeProvider } from "@/components/providers/themeProvider";
 import { profile } from "@/data/profile";
 import { siteUrl } from "@/utilities/constants/site";
+import { pageMetadata, siteTitle } from "@/utilities/helpers/pageMetadata";
 
 import "./globals.css";
 
@@ -25,27 +26,15 @@ const plexMono = IBM_Plex_Mono({
   preload: false,
 });
 
-const defaultTitle = `${profile.name} · ${profile.role}`;
-
+// The fallback for any page that doesn't set its own; each tab page exports a full set.
 export const metadata: Metadata = {
+  ...pageMetadata({ description: profile.siteDescription, path: "/" }),
   metadataBase: new URL(siteUrl),
   title: {
-    default: defaultTitle,
+    default: siteTitle,
     template: `%s · ${profile.name}`,
   },
-  description: profile.siteDescription,
-  openGraph: {
-    type: "website",
-    siteName: profile.name,
-    title: defaultTitle,
-    description: profile.siteDescription,
-    url: "/",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: defaultTitle,
-    description: profile.siteDescription,
-  },
+  authors: [{ name: profile.name, url: siteUrl }],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

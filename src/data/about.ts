@@ -3,6 +3,8 @@ import type { AboutPage } from "@/models/about";
 export const aboutPage: AboutPage = {
   title: "About",
   intro: "A bit about me and how I work.",
+  metaDescription:
+    "About Muizz Jamiu, a frontend engineer in Lagos building fast, accessible web apps with React, Next.js and TypeScript: background, way of working, current focus.",
   bio: [
     "I’m a frontend engineer in Lagos. I build fast, accessible web apps with React, Next.js and TypeScript.",
     "I also care about what happens beyond the screen: clear requirements, a sound data model, and how a system behaves when something fails. That’s what draws me to products where reliability matters, like payments, where a double charge isn’t a small bug.",

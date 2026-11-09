@@ -10,6 +10,14 @@ export const profile: Profile = {
   photoAlt: "Portrait of Muizz Jamiu",
   siteDescription:
     "Frontend engineer in Lagos building fast, accessible web apps with React, Next.js and TypeScript.",
+  // Rendered from HTML with the site's colours and Poppins; regenerate it if the name, role or
+  // tagline changes.
+  previewImage: {
+    src: "/og-image.png",
+    width: 1200,
+    height: 630,
+    alt: "Muizz Jamiu, Frontend Engineer. I build interfaces that are fast, accessible and reliable. Open to frontend roles.",
+  },
   tagline: {
     lead: "I build interfaces that are",
     words: ["fast", "accessible", "reliable"],
