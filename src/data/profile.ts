@@ -26,17 +26,17 @@ export const profile: Profile = {
       label: "Location",
       value: "Lagos, Nigeria",
     },
+  ],
+  socialLinks: [
     {
       kind: "github",
-      label: "GitHub",
-      value: "github.com/spr-tech",
       href: "https://github.com/spr-tech",
+      ariaLabel: "GitHub profile (opens in a new tab)",
     },
     {
       kind: "linkedin",
-      label: "LinkedIn",
-      value: "in/muizz-opeyemi",
-      href: "https://www.linkedin.com/in/muizz-opeyemi",
+      href: "https://linkedin.com/in/muizz-opeyemi",
+      ariaLabel: "LinkedIn profile (opens in a new tab)",
     },
   ],
   contactsToggle: {

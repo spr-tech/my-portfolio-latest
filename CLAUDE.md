@@ -33,7 +33,7 @@ The approved visual design is in `docs/design/` (see "Design reference" below).
 - Tailwind CSS v4 (configured in `src/app/globals.css`, no `tailwind.config` file)
 - `next-themes` for light and dark mode
 - `motion` (formerly Framer Motion) for the few animations listed below, imported from `motion/react`
-- `next/font` for IBM Plex Sans, `next/image` for every image
+- `next/font` for Plus Jakarta Sans (and IBM Plex Mono for the terminal), `next/image` for every image
 - `clsx` + `tailwind-merge` behind a `cn()` helper
 
 Do not add a library without asking first. This site has no backend, no auth and no data fetching.
@@ -59,6 +59,11 @@ Layout: sidebar card on the left on desktop, sticky (`lg:sticky lg:top-6`) so it
 the tab content scrolls. On mobile it collapses to a compact card at the top: photo, name, role badge,
 theme toggle, then "Show contacts" and "Download CV" side by side. Contacts open in a dropdown on
 mobile. The sidebar must never be sticky below the `lg` breakpoint.
+
+Profile photo: a rounded square, not a circle, with no accent ring. 128px with `rounded-2xl` on
+desktop, 64px with `rounded-xl` on mobile, `object-top` so the face isn't cropped, quality 90.
+Contacts: Email and Location are full rows with uppercase captions; GitHub and LinkedIn are a centred
+row of icon links (20px icons, 44px tap targets) underneath. On mobile both sit inside the dropdown.
 
 ---
 
@@ -94,6 +99,8 @@ src/
 │   ├── layouts/
 │   │   ├── appShell.tsx          # Sidebar + tab bar + content area
 │   │   ├── sidebar.tsx
+│   │   ├── contactsDisclosure.tsx # Mobile "Show contacts" toggle (client)
+│   │   ├── contactList.tsx       # Contacts with icons; sidebar and Contact tab
 │   │   └── tabNav.tsx            # Active tab via usePathname()
 │   │
 │   ├── providers/
@@ -220,7 +227,8 @@ tokens below.
   --color-accent-subtle: var(--accent-subtle);
   --color-accent-foreground: var(--accent-foreground);
   --color-danger: var(--danger);
-  --font-sans: var(--font-plex-sans);
+  --font-sans: var(--font-jakarta-sans);
+  --font-mono: var(--font-plex-mono);
 }
 ```
 
@@ -242,8 +250,10 @@ Theme setup notes:
 
 ### Typography
 
-- One font: IBM Plex Sans via `next/font/google`, weights 400, 500 and 600, exposed as
-  `--font-plex-sans`. The only exception is IBM Plex Mono (400, 500) for the About terminal card.
+- One font: Plus Jakarta Sans via `next/font/google`, weights 400, 500, 600 and 700, exposed as
+  `--font-jakarta-sans`. The only exception is IBM Plex Mono (400, 500) for the About terminal card,
+  loaded with `preload: false` since only one tab uses it.
+- Headings use 600 or 700. The name in the sidebar is 700.
 - Hierarchy comes from size and weight only. Use the `Text` component so sizes stay consistent.
 - Scale: 32/24/18 for headings, 16 body, 14 small, 12 captions. Line height 1.6 for body.
 - Sentence case for headings, tabs and buttons. No all-caps section titles.
@@ -262,7 +272,7 @@ A little motion, never decorative noise. Every animation must have a reason.
 | Where              | What                                                         | Duration          |
 | ------------------ | ------------------------------------------------------------ | ----------------- |
 | Page load          | Sidebar, tabs, heading, then cards fade in and rise 14px, staggered ~110ms apart | ~600ms each |
-| Profile photo      | Pops in from 90% scale; thin accent ring around it           | ~600ms            |
+| Profile photo      | Pops in from 90% scale (rounded square, no ring)             | ~600ms            |
 | Tab bar            | Active underline scales in under the new tab (`layoutId` or scaleX) | ~300ms     |
 | Tab content        | Fades and rises 8px on route change                          | ~200ms            |
 | Cards              | On hover: lift 4px, border turns `--accent`, screenshot zooms to 104% | ~250ms   |
@@ -360,7 +370,7 @@ Engine Optimisation). This site is evidence that I care about performance, so it
 
 - Every image through `next/image` with correct `sizes`. Source images in PNG or WebP;
   `next/image` serves an optimised format.
-- Mark the sidebar photo `priority` since it is likely the LCP (Largest Contentful Paint) element.
+- Mark the sidebar photo `preload` (Next 16 deprecated `priority`) since it is likely the LCP (Largest Contentful Paint) element.
 - No layout shift: fixed image dimensions, fonts through `next/font`.
 - Keep client JavaScript small. Do not make a whole page a client component for one interactive bit.
 - Tabs: `aria-current="page"` on the active link. Visible focus ring using `--accent`.
