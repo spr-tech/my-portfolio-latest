@@ -3,7 +3,7 @@ import type { AnchorHTMLAttributes, ReactNode } from "react";
 import { ArrowUpRightIcon } from "@/components/ui/icons/icons";
 import { cn } from "@/utilities/helpers/cn";
 
-type ExternalLinkTone = "accent" | "muted";
+type ExternalLinkTone = "accent" | "muted" | "primary";
 
 type ExternalLinkProps = {
   href: string;
@@ -17,6 +17,7 @@ type ExternalLinkProps = {
 const toneClasses: Record<ExternalLinkTone, string> = {
   accent: "text-accent-text",
   muted: "text-text-secondary hover:text-text-primary",
+  primary: "font-normal text-text-primary hover:text-accent-text",
 };
 
 /** A link that opens in a new tab, for live sites, GitHub and LinkedIn. */

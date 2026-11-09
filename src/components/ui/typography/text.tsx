@@ -4,7 +4,7 @@ import { cn } from "@/utilities/helpers/cn";
 
 type TextSize = "page" | "title" | "heading" | "body" | "small" | "caption";
 type TextTone = "primary" | "body" | "secondary" | "muted" | "accent";
-type TextWeight = "regular" | "medium" | "semibold";
+type TextWeight = "regular" | "medium" | "semibold" | "bold";
 type TextElement =
   | "h1"
   | "h2"
@@ -51,6 +51,7 @@ const weightClasses: Record<TextWeight, string> = {
   regular: "font-normal",
   medium: "font-medium",
   semibold: "font-semibold",
+  bold: "font-bold",
 };
 
 const isHeadingSize = (size: TextSize) => size === "page" || size === "title" || size === "heading";

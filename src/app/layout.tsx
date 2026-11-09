@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { IBM_Plex_Mono, Plus_Jakarta_Sans } from "next/font/google";
 
+import { AppShell } from "@/components/layouts/appShell";
 import { ThemeProvider } from "@/components/providers/themeProvider";
 import { profile } from "@/data/profile";
 import { siteUrl } from "@/utilities/constants/site";
 
 import "./globals.css";
 
-const plexSans = IBM_Plex_Sans({
+const jakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-plex-sans",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-jakarta-sans",
   display: "swap",
 });
 
@@ -50,11 +51,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${plexSans.variable} ${plexMono.variable}`}
+      className={`${jakartaSans.variable} ${plexMono.variable}`}
       suppressHydrationWarning
     >
       <body className="font-sans">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <AppShell>{children}</AppShell>
+        </ThemeProvider>
       </body>
     </html>
   );

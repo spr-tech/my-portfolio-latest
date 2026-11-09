@@ -84,7 +84,7 @@
   --color-terminal-dot-yellow: var(--terminal-dot-yellow);
   --color-terminal-dot-green: var(--terminal-dot-green);
 
-  --font-sans: var(--font-plex-sans);
+  --font-sans: var(--font-jakarta-sans);
   --font-mono: var(--font-plex-mono);
 
   --ease-entrance: cubic-bezier(0.2, 0.7, 0.2, 1);

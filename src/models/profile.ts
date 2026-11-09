@@ -1,14 +1,25 @@
 import type { StaticImageData } from "next/image";
 
-export type ContactKind = "email" | "location" | "github" | "linkedin";
+export type ContactKind = "email" | "location";
 
+/** A full row with a label above the value. */
 export type ContactItem = {
   kind: ContactKind;
   label: string;
-  /** What is shown, e.g. "github.com/spr-tech". */
+  /** What is shown, e.g. "opeyemimuizz@gmail.com". */
   value: string;
   /** Omitted for items that aren't links, like the location. */
   href?: string;
+};
+
+export type SocialKind = "github" | "linkedin";
+
+/** An icon-only link in the row under the contacts. */
+export type SocialLink = {
+  kind: SocialKind;
+  href: string;
+  /** Read by screen readers in place of the icon, e.g. "GitHub profile (opens in a new tab)". */
+  ariaLabel: string;
 };
 
 export type Profile = {
@@ -28,6 +39,7 @@ export type Profile = {
   };
   status: string;
   contacts: ContactItem[];
+  socialLinks: SocialLink[];
   contactsToggle: {
     showLabel: string;
     hideLabel: string;
