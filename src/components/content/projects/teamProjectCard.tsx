@@ -19,7 +19,7 @@ export function TeamProjectCard({ project, labels }: TeamProjectCardProps) {
       as="article"
       id={project.slug}
       isInteractive
-      className="flex scroll-mt-6 flex-col gap-3 p-4 sm:p-5"
+      className="flex flex-col gap-3 p-4 sm:p-5"
     >
       <div className="relative aspect-video overflow-hidden rounded-lg border border-border bg-surface-raised">
         <Image
