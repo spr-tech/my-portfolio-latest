@@ -59,8 +59,8 @@ export const profile: Profile = {
   },
   cv: {
     label: "Download CV",
-    href: "/files/muizz-jamiu-cv.pdf",
-    fileName: "muizz-jamiu-cv.pdf",
+    href: "/files/Muizz-Jamiu_Cv.pdf",
+    fileName: "Muizz-Jamiu-Cv.pdf",
   },
   copyright: "© 2026 Muizz Jamiu",
 };
