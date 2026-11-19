@@ -7,6 +7,17 @@ import { Card } from "@/components/ui/card/card";
 import { ExternalLink } from "@/components/ui/link/externalLink";
 import { Text } from "@/components/ui/typography/text";
 import type { FeaturedProject, ProjectsPage } from "@/models/project";
+import { cn } from "@/utilities/helpers/cn";
+
+// The width at which the parent grid fits two 300px columns (2 × 18.75rem + 1.25rem gap). The grid
+// is a container, so these classes switch exactly when the grid does, whatever the screen size.
+const wide = {
+  card: "@min-[38.75rem]:col-span-full @min-[38.75rem]:flex-row",
+  image:
+    "@min-[38.75rem]:aspect-auto @min-[38.75rem]:w-1/2 @min-[38.75rem]:shrink-0 @min-[38.75rem]:border-r @min-[38.75rem]:border-b-0",
+  // Beside the text the frame can be taller than 16:10, so keep the headline corner in view.
+  photo: "@min-[38.75rem]:object-left-top",
+};
 
 type ProjectCardProps = {
   project: FeaturedProject;
@@ -18,15 +29,20 @@ type ProjectCardProps = {
    * LCP element), so it loads straight away at high priority instead of lazily.
    */
   isPriority?: boolean;
+  /**
+   * Spans the whole row with the screenshot beside the text, once the grid has two columns. Used
+   * for the first card when the count is odd, so no card is left alone with a gap beside it.
+   */
+  isWide?: boolean;
 };
 
 /** A featured project: full-width screenshot, then the problem, what was built and one decision. */
-export function ProjectCard({ project, labels, style, isPriority = false }: ProjectCardProps) {
+export function ProjectCard({ project, labels, style, isPriority = false, isWide = false }: ProjectCardProps) {
   const details = [
     { term: labels.problem, text: project.problem },
     { term: labels.built, text: project.built },
     { term: labels.decision, text: project.decision },
-  ];
+  ].filter((detail): detail is { term: string; text: string } => Boolean(detail.text));
 
   return (
     <Card
@@ -35,9 +51,14 @@ export function ProjectCard({ project, labels, style, isPriority = false }: Proj
       padding="none"
       isInteractive
       style={style}
-      className="rise-on-load flex flex-col overflow-hidden"
+      className={cn("rise-on-load flex flex-col overflow-hidden", isWide && wide.card)}
     >
-      <div className="relative aspect-16/10 overflow-hidden border-b border-border bg-surface-raised">
+      <div
+        className={cn(
+          "relative aspect-16/10 overflow-hidden border-b border-border bg-surface-raised",
+          isWide && wide.image,
+        )}
+      >
         <Image
           src={project.image}
           alt={project.imageAlt}
@@ -45,7 +66,10 @@ export function ProjectCard({ project, labels, style, isPriority = false }: Proj
           sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
           loading={isPriority ? "eager" : "lazy"}
           fetchPriority={isPriority ? "high" : "auto"}
-          className="object-cover object-top transition-transform duration-250 ease-out motion-safe:group-hover:scale-[1.04]"
+          className={cn(
+            "object-cover object-top transition-transform duration-250 ease-out motion-safe:group-hover:scale-[1.04]",
+            isWide && wide.photo,
+          )}
         />
       </div>
 
