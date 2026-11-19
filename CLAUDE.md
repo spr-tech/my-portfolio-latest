@@ -122,7 +122,9 @@ src/
 │       │   └── toolsStrip.tsx        # Marquee of tools
 │       ├── experience/
 │       │   ├── experienceContent.tsx
-│       │   └── jobCard.tsx           # One role on the work timeline
+│       │   ├── jobCard.tsx           # One role on the work timeline
+│       │   ├── educationCard.tsx     # One line in "Education and training"
+│       │   └── certificateLink.tsx   # "View certificate", opens in a new tab
 │       ├── about/
 │       │   ├── aboutContent.tsx
 │       │   └── terminalCard.tsx      # Always-dark terminal window
