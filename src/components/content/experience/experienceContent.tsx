@@ -1,3 +1,4 @@
+import { EducationCard } from "@/components/content/experience/educationCard";
 import { JobCard } from "@/components/content/experience/jobCard";
 import { PageHeader } from "@/components/layouts/pageHeader";
 import { TagList } from "@/components/ui/badge/tagList";
@@ -51,20 +52,11 @@ export function ExperienceContent() {
         <Text as="h2" size="heading" id="education-heading">
           {experiencePage.educationTitle}
         </Text>
-        {education.map((item) => (
-          <Card
-            key={item.degree}
-            padding="none"
-            isInteractive
-            className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 px-5 py-4"
-          >
-            <Text as="h3" size="body" weight="semibold" tone="primary">
-              {item.degree}{" "}
-              <span className="font-medium whitespace-nowrap text-text-secondary">· {item.school}</span>
-            </Text>
-            <Text size="caption">{item.period}</Text>
-          </Card>
-        ))}
+        <ul className="flex flex-col gap-3">
+          {education.map((item) => (
+            <EducationCard key={item.title} item={item} />
+          ))}
+        </ul>
       </section>
     </>
   );

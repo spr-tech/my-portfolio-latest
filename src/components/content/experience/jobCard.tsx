@@ -4,24 +4,15 @@ import type { CSSProperties } from "react";
 import { TagList } from "@/components/ui/badge/tagList";
 import { Card } from "@/components/ui/card/card";
 import { ArrowUpRightIcon } from "@/components/ui/icons/icons";
-import { ExternalLink } from "@/components/ui/link/externalLink";
+import { CertificateLink } from "@/components/content/experience/certificateLink";
 import { Text } from "@/components/ui/typography/text";
-import type { Certificate, Job } from "@/models/experience";
+import type { Job } from "@/models/experience";
 
 type JobCardProps = {
   job: Job;
   /** Stagger delay for the first-load entrance. */
   style?: CSSProperties;
 };
-
-/** "View certificate", opening the image in a new tab; aria-label names the certificate. */
-function CertificateLink({ certificate, className }: { certificate: Certificate; className?: string }) {
-  return (
-    <ExternalLink href={certificate.href} aria-label={certificate.ariaLabel} hasArrow className={className}>
-      {certificate.label}
-    </ExternalLink>
-  );
-}
 
 /** One role on the work timeline: title and company, dates, highlights and the tech used. */
 export function JobCard({ job, style }: JobCardProps) {

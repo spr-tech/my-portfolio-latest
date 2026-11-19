@@ -35,10 +35,17 @@ export type SkillGroup = {
   skills: string[];
 };
 
+/** One compact line in "Education and training": title · school · detail, then the period. */
 export type Education = {
-  degree: string;
+  /** A degree or programme, e.g. "Tech Skills Accelerator (TeSA)". */
+  title: string;
   school: string;
+  /** e.g. "Cohort 6, React track". */
+  detail?: string;
   period: string;
+  /** A small badge under the line, e.g. "Best Graduating Student". */
+  award?: string;
+  certificate?: Certificate;
 };
 
 export type ExperiencePage = PageIntro & {

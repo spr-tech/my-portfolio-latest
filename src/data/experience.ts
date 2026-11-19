@@ -8,7 +8,7 @@ export const experiencePage: ExperiencePage = {
     "Muizz Jamiu’s experience: Software Engineering Fellow at TeSA Africa, frontend internships at RWA Inc and STX Technology, plus skills and education.",
   workTitle: "Work",
   skillsTitle: "Skills",
-  educationTitle: "Education",
+  educationTitle: "Education and training",
 };
 
 export const jobs: Job[] = [
@@ -60,9 +60,18 @@ export const jobs: Job[] = [
   },
 ];
 
+// The TeSA details live in the work entry above; this is the qualification only.
 export const education: Education[] = [
   {
-    degree: "Bachelor of Science (Education)",
+    title: "Tech Skills Accelerator (TeSA)",
+    school: "Univaciti",
+    detail: "Cohort 6, React track",
+    period: "2026",
+    award: "Best Graduating Student",
+    certificate: tesaCertificate,
+  },
+  {
+    title: "Bachelor of Science (Education)",
     school: "University of Ilorin",
     period: "2018 – 2023",
   },
