@@ -44,7 +44,7 @@ export const aboutPage: AboutPage = {
   currently: {
     title: "Currently",
     items: [
-      "Software Engineering Fellow at TeSA Africa, Cohort 6",
+      "Graduated from TeSA as Best Graduating Student, React track",
       "Building FoodBridge and EkoWatch with my capstone team",
       "Open to frontend engineering roles",
     ],
