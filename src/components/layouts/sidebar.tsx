@@ -6,7 +6,8 @@ import { SocialLinks } from "@/components/layouts/socialLinks";
 import { Badge } from "@/components/ui/badge/badge";
 import { Button } from "@/components/ui/button/button";
 import { Card } from "@/components/ui/card/card";
-import { DownloadIcon } from "@/components/ui/icons/icons";
+import { DownloadIcon, TrophyIcon } from "@/components/ui/icons/icons";
+import { ExternalLink } from "@/components/ui/link/externalLink";
 import { ThemeToggle } from "@/components/ui/themeToggle/themeToggle";
 import { Text } from "@/components/ui/typography/text";
 import { profile } from "@/data/profile";
@@ -70,6 +71,23 @@ export function Sidebar({ className }: SidebarProps) {
           >
             {profile.role}
           </Badge>
+          {/* Its own line under the role. From lg it's a bordered badge on one line. Beside the photo
+              on a phone it wraps to two lines, and a wrapped box keeps the full column width, which
+              left empty space inside the border; so below lg it drops the border and reads as a
+              caption line. text-balance splits it evenly ("Best Graduating / Student · TeSA") rather than
+              leaving "· TeSA" alone; the trophy stays on the first line. */}
+          <ExternalLink
+            href={profile.award.href}
+            tone="muted"
+            className="mt-1.5 flex w-fit items-start gap-1.5 py-1 text-xs leading-normal font-medium transition-colors lg:mx-auto lg:mt-2 lg:rounded-md lg:border lg:border-border lg:px-2 lg:hover:border-accent lg:hover:no-underline"
+          >
+            <TrophyIcon className="mt-px size-3.5 text-accent-text" />
+            <span className="text-balance">
+              {profile.award.title}{" "}
+              <span className="whitespace-nowrap">· {profile.award.issuer}</span>
+              <span className="sr-only">{profile.award.screenReaderHint}</span>
+            </span>
+          </ExternalLink>
         </div>
         <ThemeToggle className="lg:hidden" />
       </div>

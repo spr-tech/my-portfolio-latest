@@ -1,5 +1,6 @@
 import ekowatchImage from "@/assets/images/projects/ekowatch.webp";
 import enterImage from "@/assets/images/projects/enter.webp";
+import fastshipImage from "@/assets/images/projects/fastship.png";
 import flowboardImage from "@/assets/images/projects/flowboard.png";
 import foodbridgeImage from "@/assets/images/projects/foodbridge.webp";
 import type { FeaturedProject, ProjectsPage, TeamProject } from "@/models/project";
@@ -8,7 +9,7 @@ export const projectsPage: ProjectsPage = {
   title: "Projects",
   intro: "Things I’ve built, and the decisions behind them.",
   metaDescription:
-    "Projects by Muizz Jamiu, a frontend engineer in Lagos: Flowboard, Enter, FoodBridge and EkoWatch, each with the problem, what was built and one decision.",
+    "Projects by Muizz Jamiu, a frontend engineer in Lagos: a Fastship.Africa redesign concept, Flowboard, Enter, FoodBridge and EkoWatch, with the problem and what was built.",
   featuredTitle: "Featured",
   teamTitle: "Team projects",
   toolsLabel: "Tools I build with",
@@ -23,6 +24,20 @@ export const projectsPage: ProjectsPage = {
 };
 
 export const featuredProjects: FeaturedProject[] = [
+  {
+    slug: "fastship",
+    title: "Fastship.Africa redesign concept",
+    image: fastshipImage,
+    imageAlt: "Fastship.Africa redesign concept homepage",
+    badge: "Concept",
+    problem:
+      "Fastship’s homepage mixed businesses, food shipping and car import, so its main idea, comparing carriers in one place, got buried.",
+    built:
+      "A faster, clearer homepage and sign-in pages in Next.js, keeping Fastship’s real brand, content and customer quotes.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    liveUrl: "https://fastship-concept.vercel.app/",
+    githubUrl: "https://github.com/spr-tech/fastship-concept",
+  },
   {
     slug: "flowboard",
     title: "Flowboard",

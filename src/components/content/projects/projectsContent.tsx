@@ -28,7 +28,8 @@ export function ProjectsContent() {
         <Text as="h2" size="heading" id="featured-heading" className="rise-on-load" style={riseDelay(260)}>
           {projectsPage.featuredTitle}
         </Text>
-        <div className={cardGrid}>
+        {/* A container, so the first card can turn wide exactly when the grid has two columns. */}
+        <div className={`${cardGrid} @container`}>
           {featuredProjects.map((project, index) => (
             <ProjectCard
               key={project.slug}
@@ -36,6 +37,7 @@ export function ProjectsContent() {
               labels={projectsPage.labels}
               style={staggerDelay(370, index)}
               isPriority={index === 0}
+              isWide={index === 0 && featuredProjects.length % 2 === 1}
             />
           ))}
         </div>

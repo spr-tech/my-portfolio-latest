@@ -45,6 +45,15 @@ export type Profile = {
     accessibleText: string;
   };
   status: string;
+  /** A small badge under the role that opens the award certificate in a new tab. */
+  award: {
+    /** Shown as "title · issuer", e.g. "Best Graduating Student · TeSA". */
+    title: string;
+    issuer: string;
+    href: string;
+    /** Read after the label by screen readers, so the link says what it opens. */
+    screenReaderHint: string;
+  };
   /** Used by "Get in touch" to open an email with the subject filled in. */
   email: {
     address: string;

@@ -89,7 +89,7 @@ src/
 ├── assets/
 │   └── images/
 │       ├── profile/muizz.png     # Imported, so next/image knows its size
-│       └── projects/             # flowboard.png, enter.webp, foodbridge.webp, ekowatch.webp
+│       └── projects/             # fastship.png, flowboard.png, enter.webp, foodbridge.webp, ekowatch.webp
 │
 ├── components/
 │   ├── ui/                       # Generic. Knows nothing about projects or jobs.
@@ -122,7 +122,9 @@ src/
 │       │   └── toolsStrip.tsx        # Marquee of tools
 │       ├── experience/
 │       │   ├── experienceContent.tsx
-│       │   └── jobCard.tsx           # One role on the work timeline
+│       │   ├── jobCard.tsx           # One role on the work timeline
+│       │   ├── educationCard.tsx     # One line in "Education and training"
+│       │   └── certificateLink.tsx   # "View certificate", opens in a new tab
 │       ├── about/
 │       │   ├── aboutContent.tsx
 │       │   └── terminalCard.tsx      # Always-dark terminal window
@@ -363,7 +365,9 @@ Light versions of Experience and About follow the same layout with the light tok
 
 These apply to every piece of copy in `src/data/`.
 
-- Featured projects: Flowboard, Enter, and later the Fastship concept. Team projects (smaller cards):
+- Featured projects: the Fastship.Africa redesign concept (first, badge "Concept"), Flowboard and
+  Enter. With an odd number of featured cards, the first spans the full row (screenshot beside the
+  text) once the grid has two columns, so no card sits alone with a gap beside it. Team projects (smaller cards):
   FoodBridge and EkoWatch, with the badge "Capstone project" (never "In progress", which reads as
   unfinished).
 - Experience and About copy comes from the CV and the design files in `docs/design/`. Three roles:
@@ -416,7 +420,7 @@ Engine Optimisation). This site is evidence that I care about performance, so it
 - Every image through `next/image` with correct `sizes`. Source images in PNG or WebP;
   `next/image` serves an optimised format.
 - The LCP (Largest Contentful Paint) element, measured with mobile Lighthouse: the first featured
-  screenshot (Flowboard) on Projects, the first job card on Experience, the first bio paragraph on
+  screenshot (Fastship) on Projects, the first job card on Experience, the first bio paragraph on
   About. The first featured screenshot loads with `loading="eager"` and `fetchPriority="high"`;
   every other screenshot stays lazy.
 - The sidebar photo is never the LCP element, so it uses `loading="eager"` (it's above the fold)

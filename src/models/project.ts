@@ -8,7 +8,7 @@ type ProjectBase = {
   title: string;
   image: StaticImageData;
   imageAlt: string;
-  /** e.g. "Solo project", "Internship · RWA Inc", "Capstone project". */
+  /** e.g. "Concept", "Solo project", "Internship · RWA Inc", "Capstone project". */
   badge: string;
   tech: string[];
   liveUrl: string;
@@ -20,7 +20,8 @@ type ProjectBase = {
 export type FeaturedProject = ProjectBase & {
   problem: string;
   built: string;
-  decision: string;
+  /** Every featured card should have one; the row is hidden while it's missing. */
+  decision?: string;
 };
 
 /** A smaller card for team work. Must state the team and my role. */

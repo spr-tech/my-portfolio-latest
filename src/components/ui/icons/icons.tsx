@@ -134,6 +134,14 @@ export function PlayIcon(props: IconProps) {
   );
 }
 
+export function TrophyIcon(props: IconProps) {
+  return (
+    <BaseIcon {...props}>
+      <path d="M7 4h10v5a5 5 0 0 1-10 0zM17 6h2.5v1.5A3.5 3.5 0 0 1 16.4 11M7 6H4.5v1.5A3.5 3.5 0 0 0 7.6 11M12 14v4M8 21h8M9 18h6v3H9z" />
+    </BaseIcon>
+  );
+}
+
 export function BoltIcon(props: IconProps) {
   return (
     <BaseIcon {...props}>

@@ -1,4 +1,5 @@
 import profilePhoto from "@/assets/images/profile/muizz.png";
+import { tesaCertificate } from "@/data/certificates";
 import type { Profile } from "@/models/profile";
 
 const emailAddress = "opeyemimuizz@gmail.com";
@@ -24,6 +25,12 @@ export const profile: Profile = {
     accessibleText: "I build interfaces that are fast, accessible and reliable.",
   },
   status: "Open to frontend roles",
+  award: {
+    title: "Best Graduating Student",
+    issuer: "TeSA",
+    href: tesaCertificate.href,
+    screenReaderHint: ", view certificate",
+  },
   email: {
     address: emailAddress,
     subject: "Hello from your portfolio",
@@ -59,7 +66,7 @@ export const profile: Profile = {
   },
   cv: {
     label: "Download CV",
-    href: "/files/Muizz-Jamiu_Cv.pdf",
+    href: "/files/Muizz-Jamiu_CV.pdf",
     fileName: "Muizz-Jamiu-Cv.pdf",
   },
   copyright: "© 2026 Muizz Jamiu",

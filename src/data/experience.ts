@@ -1,3 +1,4 @@
+import { rwaCertificate, tesaCertificate } from "@/data/certificates";
 import type { Education, ExperiencePage, Job } from "@/models/experience";
 
 export const experiencePage: ExperiencePage = {
@@ -7,19 +8,23 @@ export const experiencePage: ExperiencePage = {
     "Muizz Jamiu’s experience: Software Engineering Fellow at TeSA Africa, frontend internships at RWA Inc and STX Technology, plus skills and education.",
   workTitle: "Work",
   skillsTitle: "Skills",
-  educationTitle: "Education",
+  educationTitle: "Education and training",
 };
 
 export const jobs: Job[] = [
   {
     role: "Software Engineering Fellow",
     company: "TeSA Africa",
-    period: "2026 – Present",
+    period: "2026 – Nov 2026",
     location: "Lagos",
     highlights: [
+      {
+        text: "Graduated as Best Graduating Student of Cohort 6, React track.",
+        certificate: tesaCertificate,
+      },
+      "Completed a foundation month across cloud engineering, data analytics, DevOps, software engineering, basic accounting, presentation skills and technical documentation, before specialising in React.",
       "Selected as one of 67 fellows from over 9,000 applicants for Cohort 6.",
       "Built and deployed Chowly, a restaurant ordering platform with separate customer and waiter flows.",
-      "Wrote an architecture decision dossier for a national exam results platform, scored 96/100.",
       "Designed payment flows that prevent double charges using idempotency keys and automatic reconciliation.",
     ],
     tech: ["Next.js", "TypeScript", "PostgreSQL", "AWS", "System design"],
@@ -27,7 +32,7 @@ export const jobs: Job[] = [
   {
     role: "Frontend Developer Intern",
     company: "RWA Inc",
-    period: "Apr – Oct 2026",
+    period: "Apr – Sep 2026",
     location: "Remote",
     highlights: [
       "Built the dashboard for Enter, an AI cloud IDE, including chat, projects and integrations.",
@@ -35,6 +40,7 @@ export const jobs: Job[] = [
       "Turned Figma designs into responsive interfaces, working through pull requests and code review with a distributed team.",
     ],
     tech: ["Next.js", "TypeScript", "React"],
+    certificate: rwaCertificate,
     relatedProject: {
       label: "See Enter in Projects",
       href: "/#enter",
@@ -54,9 +60,18 @@ export const jobs: Job[] = [
   },
 ];
 
+// The TeSA details live in the work entry above; this is the qualification only.
 export const education: Education[] = [
   {
-    degree: "Bachelor of Science (Education)",
+    title: "Tech Skills Accelerator (TeSA)",
+    school: "Univaciti",
+    detail: "Cohort 6, React track",
+    period: "2026",
+    award: "Best Graduating Student",
+    certificate: tesaCertificate,
+  },
+  {
+    title: "Bachelor of Science (Education)",
     school: "University of Ilorin",
     period: "2018 – 2023",
   },
